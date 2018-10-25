@@ -1,0 +1,26 @@
+@CHARSET "UTF-8";
+
+.top {
+	margin: 10px;
+	margin-top: 0;
+	padding: 5%;
+	height: 50px;
+	border-bottom: 1px solid grey;
+}
+	
+.title {
+	text-align: center;
+	font-family: 'Charmonman', cursive;
+}
+	
+.banner {
+	height: auto;
+	width: 60%;
+	margin: 20px auto;
+	display: block;
+	padding: 5px;
+	border-radius: 5px;
+	box-shadow: 1px 1px 5px grey;
+}
+	
+	
