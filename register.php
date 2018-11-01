@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	
 	// Check for a customer Name:
 	if (empty($_POST['custName'])) {
-		$errors[] = 'You forgot to enter your first name.';
+		$errors[] = 'You forgot to enter your name.';
 	} else {
 		$fn = mysqli_real_escape_string($mysqli, trim($_POST['custName'])); // capture the string
 	}
@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		// Register the user in the database...
 		
 		// Make the query:
-		$q = "INSERT INTO users(first_name,last_name,email,pass,registration_date)VALUES('$fn','$ln','$e',SHA1('$p'),NOW())";	//SHA1 = encryption
+		$q = "INSERT INTO customer()VALUES('$fn','$ln','$e',SHA1('$p'),NOW())";	//SHA1 = encryption
 		$r = @mysqli_query ($mysqli, $q); // Run the query.
 		if ($r) { // If it ran OK.
 		
@@ -96,5 +96,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	<p>Email Address: <input type="text" name="email" size="20" maxlength="60" value="<?php if (isset($_POST['email'])) echo $_POST['email'];?>" placeholder="j@gmail.com" /> </p>
 	<p>Phone Number: <input type="tel" name="custPhone" size="15" maxlength="40" value="<?php if (isset($_POST['custPhone'])) echo $_POST['custPhone']; ?>" /></p>
 	<p>Address: <input type="text" name="custAdd" size="30" maxlength="75" value="<?php if (isset($_POST['custAdd'])) echo $_POST['custAdd']; ?>" /></p>
-	<p><input type="submit" name="submit" value="Register" /></p>
+	<p><input type="submit" name="submit" value="Register" /></p>  
 </form>
