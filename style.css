@@ -14,13 +14,25 @@
 }
 	
 .banner {
-	height: auto;
-	width: 60%;
-	margin: 20px auto;
-	display: block;
-	padding: 5px;
+	height: 50vh;
+	width: 100%;
+	display: none;
 	border-radius: 5px;
 	box-shadow: 1px 1px 5px grey;
 }
+
+.category {
+	position: relative;
+}
 	
-	
+.button-left {
+	position: absolute;
+	left: 0;
+	top: 50%;
+}
+
+.button-right {
+	position: absolute;
+	right: 0;
+	top: 50%;
+}
