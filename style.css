@@ -31,15 +31,22 @@ footer{
 .category {
 	position: relative;
 }
-	
-.button-left {
+
+.button {
 	position: absolute;
-	left: 0;
 	top: 50%;
+	height: 10vh;
 }
 
-.button-right {
-	position: absolute;
+.button:hover {
+	cursor: pointer;
+	box-shadow: 1px 1px 30px white;
+}
+
+#button-left {
+	left: 0;
+}
+
+#button-right {
 	right: 0;
-	top: 50%;
 }
