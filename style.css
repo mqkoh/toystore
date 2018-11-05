@@ -3,9 +3,8 @@
 .top {
 	margin: 10px;
 	margin-top: 0;
-	padding: 5%;
-	height: 50px;
 	border-bottom: 1px solid grey;
+	text-align: center;
 }
 
 footer{
@@ -15,13 +14,14 @@ footer{
 	text-align: center;
 }
 	
-.title {
-	text-align: center;
-	font-family: 'Charmonman', cursive;
+.logo {
+	top: 0;
+	height: 50vh;
+	width: auto;
 }
 	
 .banner {
-	height: 50vh;
+	height: 65vh;
 	width: 100%;
 	display: none;
 	border-radius: 5px;
