@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	
 	//Check for customer gender 
 	if (empty($_POST['gender'])){
-		$errors[] = 'You forgor to pick your gender.';
+		$errors[] = 'You forgot to pick your gender.';
 	}else{
 		$g = mysqli_real_escape_string($mysqli, trim($_POST['gender']));
 	}
@@ -80,7 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 						
 		} // End of if ($r) IF.
 		
-		mysqli_close($mysqli); // Close the database connection.
+		mysqli_close(); // Close the database connection.
 
 		exit();
 		
@@ -101,13 +101,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 <h1>Register Customer</h1>
 <form action="register.php" method="post">
-	<p>Name: <input type="text" name="custName" size="15" maxlength="20" value="<?php if (isset($_POST['custName'])) echo $_POST['custName']; ?>" /></p>
-	<p>Password: <input type="password" name="pass1" size="10" maxlength="20" value="<?php if (isset($_POST['pass1'])) echo $_POST['pass1'];?>"  /></p>
-	<p>Confirm Password: <input type="password" name="pass2" size="10" maxlength="20" value="<?php if (isset($_POST['pass2'])) echo $_POST['pass2'];?>"  /></p>
-	<p>Gender: <input type="radio" name="gender" value="<?php if (isset($_POST['gender'])) echo $_POST['gender'];?>" /> Male<br>
-				<input type="radio" name="gender" value="<?php if (isset($_POST['gender'])) echo $_POST['gender'];?>" />Female<br></p>
-	<p>Email Address: <input type="text" name="email" size="20" maxlength="60" value="<?php if (isset($_POST['email'])) echo $_POST['email'];?>" placeholder="j@gmail.com" /> </p>
-	<p>Phone Number: <input type="tel" name="custPhone" size="15" maxlength="40" value="<?php if (isset($_POST['custPhone'])) echo $_POST['custPhone']; ?>" placeholder="010-2325679" /></p>
-	<p>Address: <input type="text" name="custAdd" size="30" maxlength="75" value="<?php if (isset($_POST['custAdd'])) echo $_POST['custAdd']; ?>" /></p>
+	<p>Name				: <input type="text" name="custName" size="20" maxlength="40" value="<?php if (isset($_POST['custName'])) echo $_POST['custName']; ?>" /></p>
+	<p>Password			: <input type="password" name="pass1" size="10" maxlength="20" value="<?php if (isset($_POST['pass1'])) echo $_POST['pass1'];?>"  /></p>
+	<p>Confirm Password	: <input type="password" name="pass2" size="10" maxlength="20" value="<?php if (isset($_POST['pass2'])) echo $_POST['pass2'];?>"  /></p>
+	<p>Gender			: <input type="radio" name="gender" value="<?php if (isset($_POST['gender'])) echo $_POST['gender'];?>" /> Male
+						<input type="radio" name="gender" value="<?php if (isset($_POST['gender'])) echo $_POST['gender'];?>" />Female<br></p>
+	<p>Email Address	: <input type="text" name="email" size="20" maxlength="60" value="<?php if (isset($_POST['email'])) echo $_POST['email'];?>" placeholder="jennifer@gmail.com" /> </p>
+	<p>Phone Number		: <input type="tel" name="custPhone" size="20" maxlength="40" value="<?php if (isset($_POST['custPhone'])) echo $_POST['custPhone']; ?>" placeholder="010-2325679" /></p>
+	<p>Address			: <input type="text" name="custAdd" size="30" maxlength="75" value="<?php if (isset($_POST['custAdd'])) echo $_POST['custAdd']; ?>" /></p><br>
 	<p><input type="submit" name="submit" value="Register" /></p>  
 </form>

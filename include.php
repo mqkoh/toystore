@@ -7,7 +7,7 @@ function doDB(){
 	
 	//if connection fails, stop script execution 
 	if(mysqli_connect_errno()){
-		printf("Connect failed: %s\n", mysqli_connect_errno());
+		printf("Could not connect to MYSQL: %s\n", mysqli_connect_errno());
 		exit();
 	}
 }
