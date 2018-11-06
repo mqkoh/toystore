@@ -20,10 +20,20 @@ footer{
 	width: auto;
 }
 
-.about {
-	height: 65vh;
+.content {
 	width: 100%;
+}
+
+.about {
+	height: 45vh;
 	text-align: justify;
+	background-image: url("images/background1.jpg");
+	opacity: 0.8;
+	padding: 50px;
+	background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 	
 .banner {
