@@ -19,6 +19,12 @@ footer{
 	height: 50vh;
 	width: auto;
 }
+
+.about {
+	height: 65vh;
+	width: 100%;
+	text-align: justify;
+}
 	
 .banner {
 	height: 65vh;
