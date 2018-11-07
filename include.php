@@ -11,6 +11,4 @@ function doDB(){
 		exit();
 	}
 }
-
 ?>
-
