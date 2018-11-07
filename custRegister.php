@@ -1,7 +1,7 @@
 <?php 
-// This script performs an INSERT query to add a record to the users table.
+// This script performs an INSERT query to add a record to the customer table.
 
-$page_title = 'Register';
+$page_title = 'Customer Register';
 
 // Check for form submission:
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -100,7 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 } // End of the main Submit conditional.
 ?>
 <h1>Register Customer</h1>
-<form action="register.php" method="post">
+<form action="custRegister.php" method="post">
 	<p>Name				: <input type="text" name="custName" size="20" maxlength="40" value="<?php if (isset($_POST['custName'])) echo $_POST['custName']; ?>" /></p>
 	<p>Password			: <input type="password" name="pass1" size="10" maxlength="20" value="<?php if (isset($_POST['pass1'])) echo $_POST['pass1'];?>"  /></p>
 	<p>Confirm Password	: <input type="password" name="pass2" size="10" maxlength="20" value="<?php if (isset($_POST['pass2'])) echo $_POST['pass2'];?>"  /></p>
