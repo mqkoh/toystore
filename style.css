@@ -9,7 +9,6 @@
 
 footer{
 	border-top: 1px solid grey;
-	margin-top: 50px;
 	padding-top: 10px;
 	text-align: center;
 }
@@ -35,6 +34,19 @@ footer{
     background-repeat: no-repeat;
     background-size: cover;
     font-family: 'Nunito', sans-serif;
+}
+
+.contactus {
+	height: 60vh;
+	text-align: justify;
+	background-image: url("images/background2.jpg");
+	opacity: 0.8;
+	padding: 50px;
+	background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+	font-family: 'Nunito', sans-serif;
 }
 	
 .banner {
