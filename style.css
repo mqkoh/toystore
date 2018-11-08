@@ -1,7 +1,11 @@
 @CHARSET "UTF-8";
 
+body, html {
+	font-family: 'Nunito', sans-serif;
+	margin: 0;
+}
+
 .top {
-	margin: 10px;
 	margin-top: 0;
 	border-bottom: 1px solid grey;
 	text-align: center;
