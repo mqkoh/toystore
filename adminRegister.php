@@ -6,7 +6,7 @@ $page_title = 'Admin Register';
 // Check for form submission:
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-	require ('include.php'); // Connect to the db.
+	require ('mysqli_connect.php'); // Connect to the db.
 		
 	$errors = array(); // Initialize an error array.
 	
@@ -14,14 +14,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	if (empty($_POST['adminID'])) {
 		$errors[] = 'You forgot to enter your ID.';
 	} else {
-		$aid = mysqli_real_escape_string($mysqli, trim($_POST['adminID'])); // capture the string
+		$aid = mysqli_real_escape_string($dbc, trim($_POST['adminID'])); // capture the string
 	}
 	
 	// Check for a customer Name:
 	if (empty($_POST['adminName'])) {
 		$errors[] = 'You forgot to enter your name.';
 	} else {
-		$an = mysqli_real_escape_string($mysqli, trim($_POST['adminName'])); // capture the string
+		$an = mysqli_real_escape_string($dbc, trim($_POST['adminName'])); // capture the string
 	}
 	
 	// Check for a password and match against the confirmed password:
@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		if($_POST['pass2'] != $_POST['pass2']){
 			$errors[] = 'Your password did not match the confirmed password.';
 		}else{
-			$p = mysqli_real_escape_string($mysqli, trim($_POST['pass1']));
+			$p = mysqli_real_escape_string($dbc, trim($_POST['pass1']));
 		}
 	}else {
 		$errors[] = 'You forgot to enter your password.';
@@ -39,28 +39,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	if (empty($_POST['adminGender'])){
 		$errors[] = 'You forgot to pick your gender.';
 	}else{
-		$ag = mysqli_real_escape_string($mysqli, trim($_POST['adminGender']));
+		$ag = mysqli_real_escape_string($dbc, trim($_POST['adminGender']));
 	}
 	
 	// Check for an email address:
 	if (empty($_POST['adminEmail'])){
 		$errors[] = 'You forgot to enter your email address.';
 	}else{
-		$ae = mysqli_real_escape_string($mysqli, trim($_POST['adminEmail']));
+		$ae = mysqli_real_escape_string($dbc, trim($_POST['adminEmail']));
 	}
 	
 	// Check for phone number:
 	 if (empty($_POST['adminPhone'])){
 	 	$errors[] = 'You forgot to enter your phone number.';
 	 }else{
-	 	$ap = mysqli_real_escape_string($mysqli, trim($_POST['adminPhone']));
+	 	$ap = mysqli_real_escape_string($dbc, trim($_POST['adminPhone']));
 	 }
 	 
 	// Check for address:
 	if(empty($_POST['adminAdd'])){
 		$errors[] = 'You forgot to enter your address.';
 	}else{
-		$aa = mysqli_real_escape_string($mysqli, trim($_POST['adminAdd']));
+		$aa = mysqli_real_escape_string($dbc, trim($_POST['adminAdd']));
 	}
 	
 	if (empty($errors)) { // If everything's OK.
@@ -69,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		
 		// Make the query:
 		$q = "INSERT INTO admin(adminID,adminName,adminPW,adminGender,adminEmail,adminPhone,adminAdd)VALUES('$aid','$an',SHA1('$p'),'$ag','$ae','$ap','$aa')";	//SHA1 = encryption
-		$r = @mysqli_query ($mysqli, $q); // Run the query.
+		$r = @mysqli_query ($dbc, $q); // Run the query.
 		if ($r) { // If it ran OK.
 		
 			// Print a message:
@@ -83,11 +83,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 					<p class="error">You could not be registered due to a system error. We apologize for any inconvenience.</p>'; 
 			
 			// Debugging message:
-			echo '<p>' . mysqli_error($mysqli) . '<br /><br />Query: ' . $q . '</p>';
+			echo '<p>' . mysqli_error($dbc) . '<br /><br />Query: ' . $q . '</p>';
 						
 		} // End of if ($r) IF.
 		
-		mysqli_close(); // Close the database connection.
+		mysqli_close($dbc); // Close the database connection.
 
 		exit();
 		
@@ -102,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		
 	} // End of if (empty($errors)) IF.
 	
-	mysqli_close($mysqli); // Close the database connection.
+	mysqli_close($dbc); // Close the database connection.
 
 } // End of the main Submit conditional.
 ?>

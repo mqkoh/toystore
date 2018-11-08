@@ -6,7 +6,7 @@ $page_title = 'Customer Register';
 // Check for form submission:
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-	require ('include.php'); // Connect to the db.
+	require ('mysqli_connect.php'); // Connect to the db.
 		
 	$errors = array(); // Initialize an error array.
 	
@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	if (empty($_POST['custName'])) {
 		$errors[] = 'You forgot to enter your name.';
 	} else {
-		$cn = mysqli_real_escape_string($mysqli, trim($_POST['custName'])); // capture the string
+		$cn = mysqli_real_escape_string($dbc, trim($_POST['custName'])); // capture the string
 	}
 	
 	// Check for a password and match against the confirmed password:
@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		if($_POST['pass2'] != $_POST['pass2']){
 			$errors[] = 'Your password did not match the confirmed password.';
 		}else{
-			$p = mysqli_real_escape_string($mysqli, trim($_POST['pass1']));
+			$p = mysqli_real_escape_string($dbc, trim($_POST['pass1']));
 		}
 	}else {
 		$errors[] = 'You forgot to enter your password.';
@@ -32,28 +32,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	if (empty($_POST['gender'])){
 		$errors[] = 'You forgot to pick your gender.';
 	}else{
-		$g = mysqli_real_escape_string($mysqli, trim($_POST['gender']));
+		$g = mysqli_real_escape_string($dbc, trim($_POST['gender']));
 	}
 	
 	// Check for an email address:
 	if (empty($_POST['email'])){
 		$errors[] = 'You forgot to enter your email address.';
 	}else{
-		$e = mysqli_real_escape_string($mysqli, trim($_POST['email']));
+		$e = mysqli_real_escape_string($dbc, trim($_POST['email']));
 	}
 	
 	// Check for phone number:
 	 if (empty($_POST['custPhone'])){
 	 	$errors[] = 'You forgot to enter your phone number.';
 	 }else{
-	 	$cp = mysqli_real_escape_string($mysqli, trim($_POST['custPhone']));
+	 	$cp = mysqli_real_escape_string($dbc, trim($_POST['custPhone']));
 	 }
 	 
 	// Check for address:
 	if(empty($_POST['custAdd'])){
 		$errors[] = 'You forgot to enter your address.';
 	}else{
-		$a = mysqli_real_escape_string($mysqli, trim($_POST['custAdd']));
+		$a = mysqli_real_escape_string($dbc, trim($_POST['custAdd']));
 	}
 	
 	if (empty($errors)) { // If everything's OK.
@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		
 		// Make the query:
 		$q = "INSERT INTO customer(custName,custPW,custGender,custEmail,custPhone,custAdd)VALUES('$cn',SHA1('$p'),'$g','$e','$cp','$a')";	//SHA1 = encryption
-		$r = @mysqli_query ($mysqli, $q); // Run the query.
+		$r = @mysqli_query ($dbc, $q); // Run the query.
 		if ($r) { // If it ran OK.
 		
 			// Print a message:
@@ -76,11 +76,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 					<p class="error">You could not be registered due to a system error. We apologize for any inconvenience.</p>'; 
 			
 			// Debugging message:
-			echo '<p>' . mysqli_error($mysqli) . '<br /><br />Query: ' . $q . '</p>';
+			echo '<p>' . mysqli_error($dbc) . '<br /><br />Query: ' . $q . '</p>';
 						
 		} // End of if ($r) IF.
 		
-		mysqli_close(); // Close the database connection.
+		mysqli_close($dbc); // Close the database connection.
 
 		exit();
 		
@@ -95,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		
 	} // End of if (empty($errors)) IF.
 	
-	mysqli_close($mysqli); // Close the database connection.
+	mysqli_close($dbc); // Close the database connection.
 
 } // End of the main Submit conditional.
 ?>
