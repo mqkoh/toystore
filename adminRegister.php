@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		// Register the user in the database...
 		
 		// Make the query:
-		$q = "INSERT INTO admin(adminID,adminName,adminPW,adminGender,adminEmail,adminPhone,adminAdd)VALUES('$aid','$an',SHA1('$p'),'$ag','$ae','$ap','$aa')";	//SHA1 = encryption
+		$q = "INSERT INTO admin(adminID,adminName,adminPW,adminGender,adminEmail,adminPhone,adminAdd,registration_date)VALUES('$aid','$an',SHA1('$p'),'$ag','$ae','$ap','$aa',NOW())";	//SHA1 = encryption
 		$r = @mysqli_query ($dbc, $q); // Run the query.
 		if ($r) { // If it ran OK.
 		
@@ -108,13 +108,55 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 <h1>Register Admin</h1>
 <form action="adminRegister.php" method="post">
-	<p>Name				: <input type="text" name="adminName" size="20" maxlength="40" value="<?php if (isset($_POST['amdinName'])) echo $_POST['adminName']; ?>" /></p>
-	<p>Password			: <input type="password" name="pass1" size="10" maxlength="20" value="<?php if (isset($_POST['pass1'])) echo $_POST['pass1'];?>"  /></p>
-	<p>Confirm Password	: <input type="password" name="pass2" size="10" maxlength="20" value="<?php if (isset($_POST['pass2'])) echo $_POST['pass2'];?>"  /></p>
-	<p>Gender			: <input type="radio" name="adminGender" value="<?php if (isset($_POST['adminGender'])) echo $_POST['adminGender'];?>" /> Male
-						<input type="radio" name="adminGender" value="<?php if (isset($_POST['adminGender'])) echo $_POST['adminGender'];?>" />Female<br></p>
-	<p>Email Address	: <input type="text" name="adminEmail" size="20" maxlength="60" value="<?php if (isset($_POST['adminEmail'])) echo $_POST['adminEmail'];?>" placeholder="jennifer@gmail.com" /> </p>
-	<p>Phone Number		: <input type="tel" name="adminPhone" size="20" maxlength="40" value="<?php if (isset($_POST['adminPhone'])) echo $_POST['adminPhone']; ?>" placeholder="010-2325679" /></p>
-	<p>Address			: <input type="text" name="adminAdd" size="30" maxlength="75" value="<?php if (isset($_POST['adminAdd'])) echo $_POST['adminAdd']; ?>" /></p><br>
+	
+	<fieldset>
+	<legend>ID:</legend>
+	<input type="text" name="adminID" size="20" maxlength="40" value="<?php if (isset($_POST['adminID'])) echo $_POST['adminID']; ?>" />
+	</fieldset>
+	<br/>
+	
+	<fieldset>
+	<legend>Name:</legend>
+	<input type="text" name="adminName" size="20" maxlength="40" value="<?php if (isset($_POST['amdinName'])) echo $_POST['adminName']; ?>" />
+	</fieldset>
+	<br/>
+	
+	<fieldset>
+	<legend>Password:</legend>
+	<input type="password" name="pass1" size="20" maxlength="40" value="<?php if (isset($_POST['pass1'])) echo $_POST['pass1'];?>"  />
+	</fieldset>
+	<br/>
+	
+	<fieldset>
+	<legend>Confirm Password:</legend>
+	<input type="password" name="pass2" size="20" maxlength="40" value="<?php if (isset($_POST['pass2'])) echo $_POST['pass2'];?>"  />
+	</fieldset>
+	<br/>
+	
+	<fieldset>
+	<legend>Gender:</legend>
+	<input type="radio" name="adminGender" <?php if (isset($_POST['adminGender']) && ($_POST['adminGender']) == "M") echo $_POST['adminGender'];?> value="M" /> Male
+	<input type="radio" name="adminGender" <?php if (isset($_POST['adminGender']) && ($_POST['adminGender']) == "F") echo $_POST['adminGender'];?> value="F"  />Female
+	</fieldset>
+	<br/>
+	
+	<fieldset>
+	<legend>Email Address:</legend>
+	<input type="text" name="adminEmail" size="20" maxlength="40" value="<?php if (isset($_POST['adminEmail'])) echo $_POST['adminEmail'];?>" placeholder="jennifer@gmail.com" /> 
+	</fieldset>
+	<br/>
+	
+	<fieldset>
+	<legend>Phone Number:</legend>
+	<input type="tel" name="adminPhone" size="20" maxlength="40" value="<?php if (isset($_POST['adminPhone'])) echo $_POST['adminPhone']; ?>" placeholder="010-2325679" />
+	</fieldset>
+	<br/>
+	
+	<fieldset>
+	<legend>Address:</legend>
+	<input type="text" name="adminAdd" size="20" maxlength="75" value="<?php if (isset($_POST['adminAdd'])) echo $_POST['adminAdd']; ?>" />
+	</fieldset>
+	<br/>
+	
 	<p><input type="submit" name="submit" value="Register" /></p>  
 </form>

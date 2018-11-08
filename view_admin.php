@@ -22,12 +22,26 @@ if ($num > 0) { // If it ran OK, display the records.
 
 	// Table header.
 	echo '<table align="center" cellspacing="3" cellpadding="3" width="75%">
-	<tr><td align="left"><b>Name</b></td><td align="left"><b>Gender</b></td><td align="left"><b>Email</b></td><td align="left"><b>Phone</b></td><td align="left"><b>Address</b></td><td align="left"><b>Date Registered</b></td></tr>
+	<tr>
+			<td align="left"><b>Name</b></td>
+			<td align="left"><b>Gender</b></td>
+			<td align="left"><b>Email</b></td>
+			<td align="left"><b>Phone</b></td>
+			<td align="left"><b>Address</b></td>
+			<td align="left"><b>Date Registered</b></td>
+	</tr>
 ';
 
 	// Fetch and print all the records:
 	while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
-		echo '<tr><td align="left">' . $row['adminName'] . '<tr><td align="left">' . $row['adminGender'] . '<tr><td align="left">' . $row['adminEmail'] . '<tr><td align="left">' . $row['adminPhone'] . '<tr><td align="left">' . $row['adminAdd'] . '</td><td align="left">' . $row['dr'] . '</td></tr>
+		echo '<tr>
+				<td align="left">' . $row['adminName'] . '</td>
+				<td align="left">' . $row['adminGender'] . '</td>
+				<td align="left">' . $row['adminEmail'] . '</td>
+				<td align="left">' . $row['adminPhone'] . '</td>
+				<td align="left">' . $row['adminAdd'] . '</td>
+				<td align="left">' . $row['dr'] . '</td>
+			</tr>
 		';
 	}
 
