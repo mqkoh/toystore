@@ -18,3 +18,7 @@ function showDivs(n) {
   x[slideIndex-1].style.display = "block";
   y[slideIndex-1].style.display = "block";
 }
+
+navigator.registerProtocolHandler("mailto",
+        "https://mail.google.com/mail/?extsrc=mailto&url=%s",
+        "Gmail");

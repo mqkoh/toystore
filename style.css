@@ -37,7 +37,7 @@ footer{
 }
 
 .contactus {
-	height: 60vh;
+	height: 70vh;
 	text-align: justify;
 	background-image: url("images/background2.jpg");
 	opacity: 0.8;
@@ -47,6 +47,36 @@ footer{
     background-repeat: no-repeat;
     background-size: cover;
 	font-family: 'Nunito', sans-serif;
+	position: relative;
+}
+
+.contactform {
+	display: inline-block;
+}
+
+.findus {
+	display: inline-block;
+	text-align: right;
+	position: absolute;
+	top: 50px;
+	right: 50px;
+}
+
+label{
+float: left;
+width: 100px;
+clear: left;
+text-align: left;
+padding-right: 10px;
+}
+
+input {
+	height: 20px;
+}
+
+#submit {
+	height: 30px;
+	float: right;
 }
 	
 .banner {
