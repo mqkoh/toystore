@@ -15,6 +15,7 @@ footer{
 	border-top: 1px solid grey;
 	padding-top: 10px;
 	text-align: center;
+	font-size: 10pt;
 }
 	
 .logo {
@@ -77,6 +78,7 @@ padding-right: 10px;
 input {
 	height: 20px;
 	font-family: 'Nunito', sans-serif;
+	border-radius: 5%;
 }
 
 #submit {
