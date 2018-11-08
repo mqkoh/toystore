@@ -1,5 +1,5 @@
 <?php
-include 'include.php';
+require 'mysqli_connect.php';
 
 if (!$_POST) {
 	//haven't seen the form, so show it
@@ -55,37 +55,37 @@ END_OF_TEXT;
 	doDB();
 
 	//create clean versions of input strings
-	$safe_id = mysqli_real_escape_string($mysqli, $_POST['prodID']);
-	$safe_name = mysqli_real_escape_string($mysqli, $_POST['prodName']);
-	$safe_category = mysqli_real_escape_string($mysqli, $_POST['prodCategory']);
-	$safe_price = mysqli_real_escape_string($mysqli, $_POST['prodPrice']);
-	$safe_desc = mysqli_real_escape_string($mysqli, $_POST['prodDesc']);
+	$safe_id = mysqli_real_escape_string($dbc, $_POST['prodID']);
+	$safe_name = mysqli_real_escape_string($dbc, $_POST['prodName']);
+	$safe_category = mysqli_real_escape_string($dbc, $_POST['prodCategory']);
+	$safe_price = mysqli_real_escape_string($dbc, $_POST['prodPrice']);
+	$safe_desc = mysqli_real_escape_string($dbc, $_POST['prodDesc']);
 	
 	//add to product table
 	$add_name_sql = "INSERT INTO product (prodName)
                        VALUES ('".$safe_name."')";
-	$add_name_res = mysqli_query($mysqli, $add_name_sql) or die(mysqli_error($mysqli));
+	$add_name_res = mysqli_query($dbc, $add_name_sql) or die(mysqli_error($dbc));
 
 	/*get master_id for use with other tables
-	$master_id = mysqli_insert_id($mysqli);
+	$master_id = mysqli_insert_id($dbc);
 	*/
 
 	if ($_POST['prodCategory']) {
 		$add_category_sql = "INSERT INTO product(category)  VALUES ('".$safe_category."')";
-		$add_category_res = mysqli_query($mysqli, $add_category_sql) or die(mysqli_error($mysqli));
+		$add_category_res = mysqli_query($dbc, $add_category_sql) or die(mysqli_error($dbc));
 	}
 
 	if ($_POST['prodPrice']) {
 		$add_price_sql = "INSERT INTO product(price) VALUES ('".$safe_price."')";
-		$add_price_res = mysqli_query($mysqli, $add_price_sql) or die(mysqli_error($mysqli));
+		$add_price_res = mysqli_query($dbc, $add_price_sql) or die(mysqli_error($dbc));
 	}
 	
 	if ($_POST['prodDesc']) {
 		$add_desc_sql = "INSERT INTO product(desc) VALUES ('".$safe_desc."')";
-		$add_desc_res = mysqli_query($mysqli, $add_desc_sql) or die(mysqli_error($mysqli));
+		$add_desc_res = mysqli_query($dbc, $add_desc_sql) or die(mysqli_error($dbc));
 	}
 	
-	mysqli_close($mysqli);
+	mysqli_close($dbc);
 	$display_block = "<p>Your entry has been added.  Would you like to <a href=\"addentry.php\">add another</a>?</p>";
 }
 ?>
