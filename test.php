@@ -4,6 +4,16 @@
 
 $page_title = 'Update your details';
 
+// Check for a valid admin ID, through GET or POST:
+if ( (isset($_GET['id'])) && (is_numeric($_GET['id'])) ) { // From viewCustomer.php
+	$id = $_GET['id'];
+} elseif ( (isset($_POST['id'])) && (is_numeric($_POST['id'])) ) { // Form submission.
+	$id = $_POST['id'];
+} else { // No valid ID, kill the script.
+	echo '<p class="error">This page has been accessed in error.</p>';
+	exit();
+}
+
 // Check for form submission:
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -118,29 +128,42 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	
 	} // End of if (empty($errors)) IF.
 
-	mysqli_close($dbc); // Close the database connection.
-		
-}// End of the main Submit conditional.
+	
+	// Retrieve the user's information:
+	$q = "SELECT custName,custGender,custEmail,custPhone,custAdd FROM admin WHERE custID=$id";
+	$r = @mysqli_query ($dbc, $q);
+
+	if (mysqli_num_rows($r) == 1) { // Valid user ID, show the form.
+
+	// Get the user's information:
+	$row = mysqli_fetch_array ($r, MYSQLI_NUM);
+
+	// Create the form:
+	echo '<h1>Update your details</h1>
+			<form action="password.php" method="post">
+				<fieldset>
+				<legend><b>Customer Details</b></legend>
+				<p>Name&nbsp;: <input type="text" name="custName" size="20" maxlength="60" value="'.$row[0].'"  /></p>
+				<p>Gender&nbsp;: <input type="radio" name="custGender" value="'.$row[1].'" /> Male
+								 <input type="radio" name="custGender" value="'.$row[0].'"  />Female<br></p>
+				<p>Email Address&nbsp;: <input type="text" name="custEmail" size="20" maxlength="60" value="'.$row[2].'"  /> </p>
+				<p>Phone Number&nbsp;: <input type="tel" name="custPhone" size="20" maxlength="40" value="'.$row[3].'>" /></p>
+				<p>Address&nbsp;: <input type="text" name="custAdd" size="30" maxlength="75" value="'.$row[4].'" /></p><br>
+				</fieldset>
+				<br/>
+				
+				<fieldset>
+				<legend><b>Login Details</b></legend>
+				<p>Current Password: <input type="password" name="custPW" size="10" maxlength="20" value="<?php if (isset($_POST['custPW'])) echo $_POST['custPW']; ?>"  /></p>
+				<p>New Password: <input type="password" name="pass1" size="10" maxlength="20" value="<?php if (isset($_POST['pass1'])) echo $_POST['pass1']; ?>"  /></p>
+				<p>Confirm New Password: <input type="password" name="pass2" size="10" maxlength="20" value="<?php if (isset($_POST['pass2'])) echo $_POST['pass2']; ?>"  /></p><br/>
+				</fieldset>
+				
+				<p><input type="submit" name="submit" value="Update Details" /></p>
+			</form>';
+	else { // Not a valid user ID.
+		echo '<p class="error">This page has been accessed in error.</p>';
+	}
+	
+	mysqli_close($dbc);
 ?>
-<h1>Update your details</h1>
-<form action="password.php" method="post">
-	<fieldset>
-	<legend><b>Customer Details</b></legend>
-	<p>Name&nbsp;: <input type="text" name="custName" size="20" maxlength="60" value="<?php if (isset($_POST['custName'])) echo $_POST['custName']; ?>"  /></p>
-	<p>Gender&nbsp;: <input type="radio" name="custGender" <?php if (isset($_POST['custGender']) && ($_POST['custGender']) == "M") echo $_POST['custGender'];?> value="M" /> Male
-					 <input type="radio" name="custGender" <?php if (isset($_POST['custGender']) && ($_POST['custGender']) == "F") echo $_POST['custGender'];?> value="F"  />Female<br></p>
-	<p>Email Address&nbsp;: <input type="text" name="custEmail" size="20" maxlength="60" value="<?php if (isset($_POST['custEmail'])) echo $_POST['custEmail']; ?>"  /> </p>
-	<p>Phone Number&nbsp;: <input type="tel" name="custPhone" size="20" maxlength="40" value="<?php if (isset($_POST['custPhone'])) echo $_POST['custPhone']; ?>" /></p>
-	<p>Address&nbsp;: <input type="text" name="custAdd" size="30" maxlength="75" value="<?php if (isset($_POST['custAdd'])) echo $_POST['custAdd']; ?>" /></p><br>
-	</fieldset>
-	<br/>
-	
-	<fieldset>
-	<legend><b>Login Details</b></legend>
-	<p>Current Password: <input type="password" name="custPW" size="10" maxlength="20" value="<?php if (isset($_POST['custPW'])) echo $_POST['custPW']; ?>"  /></p>
-	<p>New Password: <input type="password" name="pass1" size="10" maxlength="20" value="<?php if (isset($_POST['pass1'])) echo $_POST['pass1']; ?>"  /></p>
-	<p>Confirm New Password: <input type="password" name="pass2" size="10" maxlength="20" value="<?php if (isset($_POST['pass2'])) echo $_POST['pass2']; ?>"  /></p><br/>
-	</fieldset>
-	
-	<p><input type="submit" name="submit" value="Update Details" /></p>
-</form>
