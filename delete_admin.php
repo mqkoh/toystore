@@ -1,8 +1,8 @@
 <?php 
-// This page is for deleting a customer record.
+// This page is for deleting an admin record.
 
-$page_title = 'Delete a Customer';
-echo '<h1>Delete a customer</h1>';
+$page_title = 'Delete an Admin';
+echo '<h1>Delete an admin</h1>';
 
 // Check for a valid customer ID, through GET or POST:
 if ( (isset($_GET['id'])) && (is_numeric($_GET['id'])) ) { // From viewCustomer.php
@@ -24,25 +24,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		if($_POST['sure'] == 'Yes'){
 			
 			// Make the query:
-			$q = "DELETE FROM customer WHERE custID = $id LIMIT 1";
+			$q = "DELETE FROM admin WHERE adminID = $id LIMIT 1";
 			$r = @mysqli_query($dbc, $q);
 			
 			if(mysqli_affected_rows($dbc) == 1){// If it ran OK.
 				
 				// Print a message:
-				echo 'The customer has been deleted.';
+				echo 'The admin has been deleted.';
 			}else {// If the query did not run OK.
-				echo '<p class="error"> The customer could not be deleted due to system error.</p>';// Public message.
+				echo '<p class="error"> The admin could not be deleted due to system error.</p>';// Public message.
 				echo '<p>'.mysqli_error($dbc).'<br /> Query: ' .$q.'</p>';// Debugging message.;
 			}
 		}else { // No confirmation of deletion.
-			echo '<p>The customer has NOT been deleted.</p>';
+			echo '<p>The admin has NOT been deleted.</p>';
 		}
 		
 } else { // Show the form.
 
 	// Retrieve the user's information:
-	$q = "SELECT custID,custName,custAdd FROM customer WHERE custID=$id";
+	$q = "SELECT adminID,adminName,adminAdd FROM admin WHERE adminID=$id";
 	$r = @mysqli_query ($dbc, $q);
 
 	if (mysqli_num_rows($r) == 1) { // Valid user ID, show the form.
@@ -52,19 +52,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		
 		// Display the record being deleted:
 		echo "<fieldset>
-				<legend>Customer Details</legend>
+				<legend>Admin Details</legend>
 				<p><b>ID</b>&nbsp		: $row[0]</p>
 				<p><b>Name</b>&nbsp		: $row[1]</p>
 				<p><b>Address</b>&nbsp	: $row[2]</p>
 			</fieldset><br/>
-		Are you sure you want to delete this customer?";
+			Are you sure you want to delete this admin?";
 		
 		// Create the form:
-		echo '<form action="delete_cust.php" method="post"><br/>
-					<input type="radio" name="sure" value="Yes" /> Yes 
-					<input type="radio" name="sure" value="No" checked="checked" /> No<br/><br/>
-					<input type="submit" name="submit" value="Submit" />
-					<input type="hidden" name="custID" value="' . $id . '" />
+		echo '<form action="delete_admin.php" method="post"><br/>
+				<input type="radio" name="sure" value="Yes" /> Yes 
+				<input type="radio" name="sure" value="No" checked="checked" /> No <br/><br/>
+				<input type="submit" name="submit" value="Submit" />
+				<input type="hidden" name="adminID" value="' . $id . '" />
 			</form>';
 	
 	} else { // Not a valid user ID.

@@ -1,10 +1,10 @@
 <?php 
 // This page is for editing a user record.
 
-$page_title = 'Edit a Customer';
-echo '<h1>Edit a Customer</h1>';
+$page_title = 'Edit an admin';
+echo '<h1>Edit an admin</h1>';
 
-// Check for a valid user ID, through GET or POST:
+// Check for a valid admin ID, through GET or POST:
 if ( (isset($_GET['id'])) && (is_numeric($_GET['id'])) ) { // From viewCustomer.php
 	$id = $_GET['id'];
 } elseif ( (isset($_POST['id'])) && (is_numeric($_POST['id'])) ) { // Form submission.
@@ -23,10 +23,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$errors = array();
 	
 	// Check for a customer name:
-	if (empty($_POST['custName'])) {
-		$errors[] = 'You forgot to enter the name of the customer.';
+	if (empty($_POST['adminName'])) {
+		$errors[] = 'You forgot to enter the name of the admin.';
 	} else {
-		$cn = mysqli_real_escape_string($dbc, trim($_POST['custName']));
+		$an = mysqli_real_escape_string($dbc, trim($_POST['adminName']));
 	}
 	
 	/* Check for a last name:
@@ -38,32 +38,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	*/
 
 	// Check for an email address:
-	if (empty($_POST['custEmail'])) {
+	if (empty($_POST['adminEmail'])) {
 		$errors[] = 'You forgot to enter your email address.';
 	} else {
-		$e = mysqli_real_escape_string($dbc, trim($_POST['custEmail']));
+		$e = mysqli_real_escape_string($dbc, trim($_POST['adminEmail']));
 	}
 	
 	if (empty($errors)) { // If everything's OK.
 	
 		// Test for unique email address:
-		$q = "SELECT custID FROM customer WHERE custEmail='$e' AND custID !=$id";
+		$q = "SELECT adminID FROM admin WHERE adminEmail='$e' AND adminID !=$id";
 		$r = @mysqli_query($dbc, $q);
 		
 		
 		if (mysqli_num_rows($r) == 0) {
 
 			// Make the query:
-			$q = "UPDATE customer SET custName='$cn',custEmail='$e' WHERE custID=$id LIMIT 1";
+			$q = "UPDATE admin SET adminName='$an',adminEmail='$e' WHERE adminID=$id LIMIT 1";
 			$r = @mysqli_query($dbc,$q);
 				
 			if (mysqli_affected_rows($dbc) == 1) { // If it ran OK.
 
 				// Print a message:
-				echo '<p>The customer has been edited.</p>';	
+				echo '<p>The admin has been edited.</p>';	
 				
 			} else { // If it did not run OK.
-				echo '<p class="error">The customer could not be edited due to a system error. We apologize for any inconvenience.</p>'; // Public message.
+				echo '<p class="error">The admin could not be edited due to a system error. We apologize for any inconvenience.</p>'; // Public message.
 				echo '<p>' . mysqli_error($dbc) . '<br />Query: ' . $q . '</p>'; // Debugging message.
 			}
 				
@@ -86,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 // Always show the form...
 
 // Retrieve the user's information:
-$q = "SELECT custName,custEmail FROM customer WHERE custID=$id";		
+$q = "SELECT adminName,adminEmail FROM admin WHERE adminID=$id";		
 $r = @mysqli_query ($dbc, $q);
 
 if (mysqli_num_rows($r) == 1) { // Valid user ID, show the form.
@@ -95,9 +95,9 @@ if (mysqli_num_rows($r) == 1) { // Valid user ID, show the form.
 	$row = mysqli_fetch_array ($r, MYSQLI_NUM);
 	
 	// Create the form:
-	echo '<form action="edit_cust.php" method="post">
-			<p>Name: <input type="text" name="custName" size="15" maxlength="15" value="' . $row[0] . '" /></p>
-			<p>Email Address: <input type="text" name="custEmail" size="20" maxlength="60" value="' . $row[1] . '" /></p>
+	echo '<form action="edit_admin.php" method="post">
+			<p>Name: <input type="text" name="adminName" size="15" maxlength="15" value="' . $row[0] . '" /></p>
+			<p>Email Address: <input type="text" name="adminEmail" size="20" maxlength="60" value="' . $row[1] . '" /></p>
 			<p><input type="submit" name="submit" value="Submit" /></p>
 			<input type="hidden" name="id" value="' . $id . '" />
 		</form>';

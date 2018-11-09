@@ -4,7 +4,7 @@
 $page_title = 'Edit a Customer';
 echo '<h1>Edit a Customer</h1>';
 
-// Check for a valid user ID, through GET or POST:
+// Check for a valid customer ID, through GET or POST:
 if ( (isset($_GET['id'])) && (is_numeric($_GET['id'])) ) { // From viewCustomer.php
 	$id = $_GET['id'];
 } elseif ( (isset($_POST['id'])) && (is_numeric($_POST['id'])) ) { // Form submission.
