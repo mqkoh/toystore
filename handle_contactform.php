@@ -1,0 +1,13 @@
+<?php
+$name = $_POST['name'];
+$email = $_POST['email'];
+$comment = $_POST['comment'];
+
+echo '<h1>Thank you for your feedback!</h1><h2>We will send you a reply as soon as possible.</h2>';
+echo 'Name: ' . $name;
+echo '<br>Email: ' . $email;
+echo '<br>Comment: ' . $comment;
+echo '<br><br><a href="index.html">Return to home page.</a>'
+
+		
+?>
