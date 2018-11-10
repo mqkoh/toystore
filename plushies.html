@@ -1,36 +1,72 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Plushies</title>
-<style>
-	#figure{	
- 		 	width:400px;
+<meta charset="utf-8">
+<style>       
+	.box1	{	
+			position: relative;
+			width:400px;
 		 	border:none;
          	padding:50px;
          	text-align:center;
-		   }  
-		
+			}       
+
+	.image	{            
+			opacity: 1;            
+			display: block;            
+			width: 100%;            
+			height: auto;            
+			transition: .5s ease;            
+			backface-visibility: hidden;        
+	      	}
+      
+	.box2	{            
+			transition: .5s ease;            
+			opacity: 0;            
+			position: absolute;            
+			top: 50%;
+            left: 50%;        
+			transform: translate(-50%, -50%);            
+			-ms-transform: translate(-50%, -50%)        
+	     	}        
+
+	.box1:hover.image 	{            
+						opacity: 0.3;      
+						}
+        	
+	.box1:hover .box2 	{           
+						opacity: 1;        
+						}        
+
+	.cart 	{            
+			background-color: #000000;            
+			color: white;            
+			font-size: 13px;            
+			padding: 10px 10px;        
+			}     
 </style>
 </head>
 <body>
 <h2 align="center">Plushies</h2>
 <table align="center" border="0">
-	<tr>
-		<td><div id="figure">
-			<img src="productImages/Plushies/plush01.png" height="300" width="350" alt="Plush01">
-			<p align="center">Dog Plush Beige White<br><strike>RM94.84</strike><br>NOW: RM79<br></p>
+	<tr>	
+		<td>	    
+		<div class="box1">            
+		<img src="C:/xampp/htdocs/toystore/productImages/Plushies/plush01.png" alt="Plush01" class="image">                
+			<div class="box2">                   
 				<form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-					<input type="hidden" name="business" value="kin@kinskards.com">
-					<input type="hidden" name="cmd" value="_cart">
-					<input type="hidden" name="add" value="1">
+        			<input type="hidden" name="business" value="kin@kinskards.com">                     
+					<input type="hidden" name="cmd" value="_cart">                      
+					<input type="hidden" name="add" value="1">                      
 					<input type="hidden" name="item_name" value="Dog Plush Beige White">
-					<input type="hidden" name="amount" value="79.00">
-					<input type="hidden" name="currency_code" value="MYR">
-					<input type="image" name="submit" src="https://www.paypalobjects.com/webstatic/en_US/i/btn/png/btn_addtocart_120x26.png" alt="Add To Cart">
-					<img alt="Add to Cart" height="30" width="150" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" > 
-				</form>
-           	</div>
+					<input type="hidden" name="amount" value="79.00">                    
+					<input type="hidden" name="currency_code" value="MYR">                     
+					<input class="cart" type="submit" name="Add to Cart" value="Add to Cart">                   
+				</form>                
+			</div>        
+		</div>
+		<p align="center">Dog Plush Beige White<br><strike>RM94.84</strike><br>NOW: RM79<br></p>   
 		</td>
             
 		<td><div id="figure">
