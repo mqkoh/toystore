@@ -23,7 +23,8 @@ if (filename == "index.html") {
 	  x[slideIndex-1].style.display = "block";
 	  y[slideIndex-1].style.display = "block";
 	}
-} else if (filename == "pop.html"){
+	
+} else if (filename == "pop.html" || "lego.html"){
 	function openTab(evt, tabName) {
 	    var i, tabcontent, tablinks;
 	    tabcontent = document.getElementsByClassName("tabcontent");
@@ -37,7 +38,6 @@ if (filename == "index.html") {
 	    document.getElementById(tabName).style.display = "block";
 	    evt.currentTarget.className += " active";
 	}
-
 	// Get the element with id="defaultOpen" and click on it
 	document.getElementById("defaultOpen").click();
 
