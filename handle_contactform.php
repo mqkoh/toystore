@@ -15,9 +15,10 @@ echo '<br><br><a href="index.html">Return to home page.</a>';
 <link href="https://fonts.googleapis.com/css?family=Cuprum|Exo|Indie+Flower|Nunito" rel="stylesheet">
 <style>
 body {
-	background-image: url(images/background3.jpg);
+	background-image: linear-gradient(#CB8BEC, #E1C2F1);
 	background-size: 100%;
 	color: white;
 	font-family: 'Nunito', sans-serif;
 	margin: 20pt;
+	}
 </style>

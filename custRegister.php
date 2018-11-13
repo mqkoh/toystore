@@ -111,3 +111,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	<p>Address			: <input type="text" name="custAdd" size="30" maxlength="75" value="<?php if (isset($_POST['custAdd'])) echo $_POST['custAdd']; ?>" /></p><br>
 	<p><input type="submit" name="submit" value="Register" /></p>  
 </form>
+
+<link href="https://fonts.googleapis.com/css?family=Cuprum|Exo|Indie+Flower|Nunito" rel="stylesheet">
+<style>
+body {
+	background-image: linear-gradient(#E9C548, #E7E573);
+	background-size: 100%;
+	color: white;
+	font-family: 'Nunito', sans-serif;
+	margin: 20pt;
+	}
+</style>
