@@ -12,7 +12,7 @@ echo '<br><br><a href="index.html">Return to home page.</a>';
 		
 ?>
 
-<link href="https://fonts.googleapis.com/css?family=Cuprum|Exo|Indie+Flower|Nunito" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 <style>
 body {
 	background-image: linear-gradient(#CB8BEC, #E1C2F1);
