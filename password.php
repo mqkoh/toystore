@@ -11,39 +11,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		
 	$errors = array(); // Initialize an error array.
 	
-	// Check for a customer Name:
-	if (empty($_POST['custName'])) {
-		$errors[] = 'You forgot to enter your name.';
-	} else {
-		$ncn = mysqli_real_escape_string($dbc, trim($_POST['custName'])); // capture the string
-	}
-	
-	//Check for customer gender
-	if (empty($_POST['custGender'])){
-		$errors[] = 'You forgot to pick your gender.';
-	}else{
-		$ng = mysqli_real_escape_string($dbc, trim($_POST['custGender']));
-	}
-	
 	// Check for an email address:
 	if (empty($_POST['custEmail'])){
 		$errors[] = 'You forgot to enter your email address.';
 	}else{
 		$ne = mysqli_real_escape_string($dbc,trim($_POST['custEmail']));
-	}
-	
-	// Check for phone number:
-	if (empty($_POST['custPhone'])){
-		$errors[] = 'You forgot to enter your phone number.';
-	}else{
-		$ncp = mysqli_real_escape_string($dbc, trim($_POST['custPhone']));
-	}
-	
-	// Check for address:
-	if(empty($_POST['custAdd'])){
-		$errors[] = 'You forgot to enter your address.';
-	}else{
-		$na = mysqli_real_escape_string($dbc, trim($_POST['custAdd']));
 	}
 	
 	// Check for the current password:
@@ -68,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	if (empty($errors)){
 	 		
 		// Check that they've entered the right email address/password combination:
-		$q = "SELECT custID,custName,custGender,custEmail,custPhone,custAdd FROM customer WHERE (custEmail='$ne' AND custPW=SHA1('$p') )";
+		$q = "SELECT custID FROM customer WHERE (custEmail='$ne' AND custPW=SHA1('$p') )";
 		$r = @mysqli_query($dbc, $q);
 		$num = @mysqli_num_rows($r);
 		if ($num == 1) { // Match was made.
@@ -77,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$row = mysqli_fetch_array($r, MYSQLI_NUM);
 
 			// Make the UPDATE query:
-			$q = "UPDATE customer SET custName='$ncn',custGender='$ng',custPhone='$ncp',custAdd='$na',custPW=SHA1('$np') WHERE custID=$row[0]";		
+			$q = "UPDATE customer SET custPW=SHA1('$np') WHERE custID=$row[0]";		
 			$r = @mysqli_query($dbc, $q);
 			
 			if (mysqli_affected_rows($dbc) == 1) { // If it ran OK.
@@ -124,19 +96,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 <h1>Update your details</h1>
 <form action="password.php" method="post">
-	<fieldset>
-	<legend><b>Customer Details</b></legend>
-	<p>Name&nbsp;: <input type="text" name="custName" size="20" maxlength="60" value="<?php if (isset($_POST['custName'])) echo $_POST['custName']; ?>"  /></p>
-	<p>Gender&nbsp;: <input type="radio" name="custGender" <?php if (isset($_POST['custGender']) && ($_POST['custGender']) == "M") echo $_POST['custGender'];?> value="M" /> Male
-					 <input type="radio" name="custGender" <?php if (isset($_POST['custGender']) && ($_POST['custGender']) == "F") echo $_POST['custGender'];?> value="F"  />Female<br></p>
-	<p>Email Address&nbsp;: <input type="text" name="custEmail" size="20" maxlength="60" value="<?php if (isset($_POST['custEmail'])) echo $_POST['custEmail']; ?>"  /> </p>
-	<p>Phone Number&nbsp;: <input type="tel" name="custPhone" size="20" maxlength="40" value="<?php if (isset($_POST['custPhone'])) echo $_POST['custPhone']; ?>" /></p>
-	<p>Address&nbsp;: <input type="text" name="custAdd" size="30" maxlength="75" value="<?php if (isset($_POST['custAdd'])) echo $_POST['custAdd']; ?>" /></p><br>
-	</fieldset>
-	<br/>
 	
 	<fieldset>
 	<legend><b>Login Details</b></legend>
+	<p>Email Address&nbsp;: <input type="text" name="custEmail" size="20" maxlength="60" value="<?php if (isset($_POST['custEmail'])) echo $_POST['custEmail']; ?>"  /> </p>
 	<p>Current Password: <input type="password" name="custPW" size="10" maxlength="20" value="<?php if (isset($_POST['custPW'])) echo $_POST['custPW']; ?>"  /></p>
 	<p>New Password: <input type="password" name="pass1" size="10" maxlength="20" value="<?php if (isset($_POST['pass1'])) echo $_POST['pass1']; ?>"  /></p>
 	<p>Confirm New Password: <input type="password" name="pass2" size="10" maxlength="20" value="<?php if (isset($_POST['pass2'])) echo $_POST['pass2']; ?>"  /></p><br/>
