@@ -8,7 +8,7 @@ if (!$_POST) {
 	$display_block = <<<END_OF_TEXT
 	<form method="post" action="$_SERVER[PHP_SELF]">
 	<fieldset>
-	<legend>Product ID:</legend>
+	<legend>Product Code:</legend>
 	<input type="text" name="prodCode" size="20" maxlength="40" required="required" /><br/>
 	</fieldset>		
 	<br/>
@@ -43,7 +43,7 @@ if (!$_POST) {
 	
 	<fieldset>	
 	<form action="blob.php" method="POST" enctype="multipart/form-data">			
-	<input type="file" name="image"><input type="submit" name="submit" value="Upload">
+	<input type="file" name="image">
 	</fieldset>
 	<br/>
 			
@@ -51,26 +51,25 @@ if (!$_POST) {
 	</form>
 END_OF_TEXT;
 } else if ($_POST) {
+	/*redundant with required=required"
 	//time to add to tables, so check for required fields
-	if (($_POST['prodID'] == "") || ($_POST['prodName'] == "")) {
+	if (($_POST['prodCode'] == "") || ($_POST['prodName'] == "")) {
 		header("Location: addProduct.php");
 		exit;
-	}
-	
+	}*/
 	
 	if (empty($_POST['prodPrice'])){
 	 	$errors[] = 'You forgot to enter your the price.';
-	 }else {
+	 } else {
 		$prodPrice_pattern ="/^01[0-9]1*-\d{7}$/";
 
-
 		if (preg_match ($prodPrice_pattern, $_POST['prodPrice'])){
-			echo "Your price is correct!";
-			$pp = mysqli_real_escape_string($dbc, trim($_POST['prodPrice'])); // capture the string
+			$safe_price = mysqli_real_escape_string($dbc, $_POST['prodPrice']); // capture the string
 		} else{
 			$errors[]= "Wrong price format!";
 		}
-	} 
+	}  
+	
 	/*connect to database
 	doDB();
 	*/
@@ -78,21 +77,21 @@ END_OF_TEXT;
 	$safe_code = mysqli_real_escape_string($dbc, $_POST['prodCode']);
 	$safe_name = mysqli_real_escape_string($dbc, $_POST['prodName']);
 	$safe_category = mysqli_real_escape_string($dbc, $_POST['prodCategory']);
-	$safe_price = mysqli_real_escape_string($dbc, $_POST['prodPrice']);
+	//$safe_price = mysqli_real_escape_string($dbc, $_POST['prodPrice']);
 	$safe_desc = mysqli_real_escape_string($dbc, $_POST['prodDesc']);
 	$safe_image = mysqli_real_escape_string($dbc,$_POST['image']);
 	
 	//add to product table
-	$add_code_sql = "INSERT INTO product (prodCode)
-						VALUES ('".$safe_code."')";
-	$add_code_res = mysqli_query($dbc, $add_code_sql) or die(mysqli_error($dbc));
+	$add_product_sql = "INSERT INTO product (prodCode, prodName, prodCategory, prodPrice, prodDesc)
+						VALUES ('".$safe_code."', '".$safe_name."', '".$safe_category."', '".$safe_price."', '".$safe_desc."')";
+	$add_product_res = mysqli_query($dbc, $add_product_sql) or die(mysqli_error($dbc));
 	
-	$add_name_sql = "INSERT INTO product (prodName)
+	/*$add_name_sql = "INSERT INTO product (prodName)
                        VALUES ('".$safe_name."')";
 	$add_name_res = mysqli_query($dbc, $add_name_sql) or die(mysqli_error($dbc));
 	/*get master_id for use with other tables
 	$master_id = mysqli_insert_id($dbc);
-	*/
+	
 	if ($_POST['prodCategory']) {
 		$add_category_sql = "INSERT INTO product(prodCategory) VALUES ('".$safe_category."')";
 		$add_category_res = mysqli_query($dbc, $add_category_sql) or die(mysqli_error($dbc));
@@ -105,31 +104,20 @@ END_OF_TEXT;
 	if ($_POST['prodDesc']) {
 		$add_desc_sql = "INSERT INTO product(prodDesc) VALUES ('".$safe_desc."')";
 		$add_desc_res = mysqli_query($dbc, $add_desc_sql) or die(mysqli_error($dbc));
-	}
+	}*/
 	if($_POST['submit']){
-	$imagename = mysqli_real_escape_string($_FILES["image"]["name"]);
-	$imagedata=mysql_real_escape_string(file_get_contents($_FILES["image"]["tmp_name"]));
-	$imagetype=mysql_real_escape_string($_FILES["image"]["type"]);
+		$imagename = mysqli_real_escape_string($_FILES["image"]["name"]);
+		$imagedata = mysqli_real_escape_string(file_get_contents($_FILES["image"]["tmp_name"]));
+		$imagetype = mysqli_real_escape_string($_FILES["image"]["type"]);
 	
-	if(substr($imagetype,0,5)=="image")
-	{
-
+	    if(substr($imagetype,0,5)=="image"){
+			mysql_query("INSERT INTO pro values('','$imagename','$imagedata')");
+			echo "Image uploaded";
+		} else {
+			echo "Only image are allowed";
+		}
+	}
 	
-	$imagename=mysql_real_escape_string($_FILES["image"]["name"]);
-	$imagedata=mysql_real_escape_string(file_get_contents($_FILES["image"]["tmp_name"]));
-	$imagetype=mysql_real_escape_string($_FILES["image"]["type"]);
-	
-	if(substr($imagetype,0,5)=="image")
-	{
-		mysql_query("INSERT INTO pro values('','$imagename','$imagedata')");
-		echo "Image uploaded";
-	}
-	else {
-		echo "Only image are allowed";
-	}
-}
-		
-	}
 	mysqli_close($dbc);
 	$display_block = "<p>Your entry has been added.  Would you like to <a href=\"addentry.php\">add another</a>?</p>";
 }
