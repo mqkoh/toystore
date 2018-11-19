@@ -48,8 +48,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	if (empty($_POST['custEmail'])){
 		$errors[] = 'You forgot to enter your email address.';
 	} else {
-		$email_pattern = "/^([a-zA-Z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/";
-		//$email_pattern = "/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/";
+		//$email_pattern = "/^([a-zA-Z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/";
+		$email_pattern = "/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/";
 		
 		if (preg_match ($email_pattern,$custEmail)){
 			$e = mysqli_real_escape_string($dbc, trim($_POST['custEmail']));
