@@ -13,17 +13,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	// Check for a customer Name:
 	if (empty($_POST['custName'])) {
 		$errors[] = 'You forgot to enter your name.';
-		}else {
-			$custName_pattern = "/^[A-Za-z0-9]{5,20}$/";
+	} else {
+		$custName_pattern = "/^[A-Za-z0-9]{5,20}$/";
 
-	if (preg_match ($custName_pattern, $username)){
-		echo "Your username is correct!";
-		$cn = mysqli_real_escape_string($dbc, trim($_POST['custName'])); // capture the string
-	} else{
-		$error[]= "Wrong username format!";
-	}
-			
-		
+		if (preg_match ($custName_pattern, $_POST['custName'])){
+			echo "Your username is correct!";
+			$cn = mysqli_real_escape_string($dbc, trim($_POST['custName'])); // capture the string
+		} else{
+			$errors[]= "Wrong username format!";
+		}
 	} 
 	
 	// Check for a password and match against the confirmed password:
@@ -49,9 +47,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$errors[] = 'You forgot to enter your email address.';
 	} else {
 		//$email_pattern = "/^([a-zA-Z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/";
-		$email_pattern = "/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/";
+		//$email_pattern = "/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/";
+		$email_pattern = "/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix";
 		
-		if (preg_match ($email_pattern,$custEmail)){
+		
+		if (preg_match ($email_pattern, $_POST['custEmail'])){
 			$e = mysqli_real_escape_string($dbc, trim($_POST['custEmail']));
 			echo "Your email is ok.";
 		} else{
