@@ -62,9 +62,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	// Check for phone number:
 	 if (empty($_POST['custPhone'])){
 	 	$errors[] = 'You forgot to enter your phone number.';
-	 }else{
-	 	$cp = mysqli_real_escape_string($dbc, trim($_POST['custPhone']));
-	 }
+	 }else {
+		$custPhone_pattern ="/^01[0-9]1*-\d{7}$/";
+
+
+		if (preg_match ($custPhone_pattern, $_POST['custPhone'])){
+			echo "Your phone number is correct!";
+			$cp = mysqli_real_escape_string($dbc, trim($_POST['custPhone'])); // capture the string
+		} else{
+			$errors[]= "Wrong phone number format!";
+		}
+	} 
+	 
 	 
 	// Check for address:
 	if(empty($_POST['custAdd'])){
