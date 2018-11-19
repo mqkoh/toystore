@@ -70,14 +70,25 @@ END_OF_TEXT;
 			$errors[]= "Wrong price format!";
 		}
 	}
-
+	
+	$stmt = $dbc -> prepare("INSERT INTO product (prodImage) VALUES(?)");
+	$null = NULL;
+	$stmt -> bind_param("b", $null);
+	
 	if (empty($_POST['prodImage'])) {
 		$errors[] = 'You forgot to enter the product image.';
 	} else {
 		$imagename = mysqli_real_escape_string($dbc, $_FILES["image"]["name"]);
 		$imagedata = mysqli_real_escape_string($dbc, file_get_contents($_FILES["image"]["tmp_name"]));
 		$imagetype = mysqli_real_escape_string($dbc, $_FILES["image"]["type"]);
-	
+		
+		
+		$fp = fopen($imagename, "r");
+		while (!feof($fp)) {
+			$stmt -> send_long_data(0, fread($fp, 16776192));
+		}
+		 
+		
 	    /*if(substr($imagetype,0,5)=="image"){
 			mysqli_query("INSERT INTO pro values('','$imagename','$imagedata')");
 			echo "Image uploaded";
@@ -119,6 +130,17 @@ END_OF_TEXT;
 		}
 	}
 	*/
+	
+	$id=11;  
+	$stmt = $dbc->prepare("SELECT prodImage FROM product WHERE prodID=?"); 
+	$stmt->bind_param("i", $id);
+	$stmt->execute();
+	$stmt->store_result();
+	$stmt->bind_result($image);
+	$stmt->fetch();
+	header("Content-Type: image/jpeg");
+	echo $image;
+	
 	mysqli_close($dbc);
 	$display_block = "<p>Your entry has been added.  Would you like to <a href=\"addproduct.php\">add another</a>?</p>";
 }
