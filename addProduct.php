@@ -1,7 +1,7 @@
 <?php
 //require 'mysqli_connect.php';
 mysql_connect("localhost","root","");
-	mysql_select_db("db4");
+mysql_select_db("toystore");
 	
 if (!$_POST) {
 	//haven't seen the form, so show it
@@ -56,8 +56,9 @@ END_OF_TEXT;
 		header("Location: addProduct.php");
 		exit;
 	}
-	//connect to database
+	/*connect to database
 	doDB();
+	*/
 	//create clean versions of input strings
 	$safe_id = mysqli_real_escape_string($dbc, $_POST['prodID']);
 	$safe_name = mysqli_real_escape_string($dbc, $_POST['prodName']);
