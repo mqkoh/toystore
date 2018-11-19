@@ -120,7 +120,7 @@ END_OF_TEXT;
 	}
 	*/
 	mysqli_close($dbc);
-	$display_block = "<p>Your entry has been added.  Would you like to <a href=\"addentry.php\">add another</a>?</p>";
+	$display_block = "<p>Your entry has been added.  Would you like to <a href=\"addproduct.php\">add another</a>?</p>";
 }
 ?>
 
