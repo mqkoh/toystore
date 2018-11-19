@@ -79,9 +79,8 @@ END_OF_TEXT;
 		$errors[] = 'You forgot to enter the product image.';
 	} else {
 		$imagename = mysqli_real_escape_string($dbc, $_FILES["image"]["name"]);
-		$imagedata = mysqli_real_escape_string($dbc, file_get_contents($_FILES["image"]["tmp_name"]));
-		$imagetype = mysqli_real_escape_string($dbc, $_FILES["image"]["type"]);
-		
+		//$imagedata = mysqli_real_escape_string($dbc, file_get_contents($_FILES["image"]["tmp_name"]));
+		//$imagetype = mysqli_real_escape_string($dbc, $_FILES["image"]["type"]);
 		
 		$fp = fopen($imagename, "r");
 		while (!feof($fp)) {
@@ -106,7 +105,7 @@ END_OF_TEXT;
 	$safe_category = mysqli_real_escape_string($dbc, $_POST['prodCategory']);
 	//$safe_price = mysqli_real_escape_string($dbc, $_POST['prodPrice']);
 	$safe_desc = mysqli_real_escape_string($dbc, $_POST['prodDesc']);
-	$safe_image = mysqli_real_escape_string($dbc,$_POST['image']);
+	//$safe_image = mysqli_real_escape_string($dbc,$_POST['image']);
 	
 	//add to product table
 	$add_product_sql = "INSERT INTO product (prodCode, prodName, prodCategory, prodPrice, prodDesc, prodImage)
@@ -130,16 +129,6 @@ END_OF_TEXT;
 		}
 	}
 	*/
-	
-	$id=11;  
-	$stmt = $dbc->prepare("SELECT prodImage FROM product WHERE prodID=?"); 
-	$stmt->bind_param("i", $id);
-	$stmt->execute();
-	$stmt->store_result();
-	$stmt->bind_result($image);
-	$stmt->fetch();
-	header("Content-Type: image/jpeg");
-	echo $image;
 	
 	mysqli_close($dbc);
 	$display_block = "<p>Your entry has been added.  Would you like to <a href=\"addproduct.php\">add another</a>?</p>";
