@@ -56,6 +56,21 @@ END_OF_TEXT;
 		header("Location: addProduct.php");
 		exit;
 	}
+	
+	
+	if (empty($_POST['prodPrice'])){
+	 	$errors[] = 'You forgot to enter your the price.';
+	 }else {
+		$prodPrice_pattern ="/^01[0-9]1*-\d{7}$/";
+
+
+		if (preg_match ($prodPrice_pattern, $_POST['prodPrice'])){
+			echo "Your price is correct!";
+			$pp = mysqli_real_escape_string($dbc, trim($_POST['prodPrice'])); // capture the string
+		} else{
+			$errors[]= "Wrong price format!";
+		}
+	} 
 	/*connect to database
 	doDB();
 	*/
