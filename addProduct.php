@@ -1,7 +1,7 @@
 <?php
-//require 'mysqli_connect.php';
-mysql_connect("localhost","root","");
-mysql_select_db("toystore");
+require 'mysqli_connect.php';
+/*mysql_connect("localhost","root","");
+mysql_select_db("toystore");*/
 	
 if (!$_POST) {
 	//haven't seen the form, so show it
@@ -9,7 +9,7 @@ if (!$_POST) {
 	<form method="post" action="$_SERVER[PHP_SELF]">
 	<fieldset>
 	<legend>Product ID:</legend>
-	<input type="text" name="prodID" size="20" maxlength="40" /><br/>
+	<input type="text" name="prodCode" size="20" maxlength="40" required="required" /><br/>
 	</fieldset>		
 	<br/>
 			
@@ -60,14 +60,18 @@ END_OF_TEXT;
 	doDB();
 	*/
 	//create clean versions of input strings
-	$safe_id = mysqli_real_escape_string($dbc, $_POST['prodID']);
+	$safe_code = mysqli_real_escape_string($dbc, $_POST['prodCode']);
 	$safe_name = mysqli_real_escape_string($dbc, $_POST['prodName']);
 	$safe_category = mysqli_real_escape_string($dbc, $_POST['prodCategory']);
 	$safe_price = mysqli_real_escape_string($dbc, $_POST['prodPrice']);
 	$safe_desc = mysqli_real_escape_string($dbc, $_POST['prodDesc']);
-	$safe_image=mysql_real_escape_string($dbc,$_POST['image']);
+	$safe_image = mysqli_real_escape_string($dbc,$_POST['image']);
 	
 	//add to product table
+	$add_code_sql = "INSERT INTO product (prodCode)
+						VALUES ('".$safe_code."')";
+	$add_code_res = mysqli_query($dbc, $add_code_sql) or die(mysqli_error($dbc));
+	
 	$add_name_sql = "INSERT INTO product (prodName)
                        VALUES ('".$safe_name."')";
 	$add_name_res = mysqli_query($dbc, $add_name_sql) or die(mysqli_error($dbc));
@@ -75,20 +79,20 @@ END_OF_TEXT;
 	$master_id = mysqli_insert_id($dbc);
 	*/
 	if ($_POST['prodCategory']) {
-		$add_category_sql = "INSERT INTO product(category)  VALUES ('".$safe_category."')";
+		$add_category_sql = "INSERT INTO product(prodCategory) VALUES ('".$safe_category."')";
 		$add_category_res = mysqli_query($dbc, $add_category_sql) or die(mysqli_error($dbc));
 	}
 	if ($_POST['prodPrice']) {
-		$add_price_sql = "INSERT INTO product(price) VALUES ('".$safe_price."')";
+		$add_price_sql = "INSERT INTO product(prodPrice) VALUES ('".$safe_price."')";
 		$add_price_res = mysqli_query($dbc, $add_price_sql) or die(mysqli_error($dbc));
 	}
 	
 	if ($_POST['prodDesc']) {
-		$add_desc_sql = "INSERT INTO product(desc) VALUES ('".$safe_desc."')";
+		$add_desc_sql = "INSERT INTO product(prodDesc) VALUES ('".$safe_desc."')";
 		$add_desc_res = mysqli_query($dbc, $add_desc_sql) or die(mysqli_error($dbc));
 	}
 	if($_POST['submit']){
-	$imagename=mysql_real_escape_string($_FILES["image"]["name"]);
+	$imagename = mysqli_real_escape_string($_FILES["image"]["name"]);
 	$imagedata=mysql_real_escape_string(file_get_contents($_FILES["image"]["tmp_name"]));
 	$imagetype=mysql_real_escape_string($_FILES["image"]["type"]);
 	

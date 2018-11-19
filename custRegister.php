@@ -38,17 +38,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	// Check for an email address:
 	if (empty($_POST['custEmail'])){
 		$errors[] = 'You forgot to enter your email address.';
-	}else if (($_POST['custEmail']) !=  {
+	} else {
 		$email_pattern = "/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/";
 		//$email_pattern = "/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/";
 		
 		if (preg_match ($email_pattern,$custEmail)){
+			$e = mysqli_real_escape_string($dbc, trim($_POST['custEmail']));
 			echo "Your email is ok.";
 		} else{
-			echo "Wrong email address format!";
+			$errors[] = 'Wrong email address format!';
 		}
-	}else{
-		$e = mysqli_real_escape_string($dbc, trim($_POST['custEmail']));
 	}
 	
 	// Check for phone number:
