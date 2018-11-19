@@ -13,9 +13,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	// Check for a customer Name:
 	if (empty($_POST['custName'])) {
 		$errors[] = 'You forgot to enter your name.';
-	} else {
+		}else {
+			$custName_pattern = "/^[A-Za-z0-9]{5,20}$/";
+
+	if (preg_match ($custName_pattern, $username)){
+		echo "Your username is correct!";
 		$cn = mysqli_real_escape_string($dbc, trim($_POST['custName'])); // capture the string
+	} else{
+		$error[]= "Wrong username format!";
 	}
+			
+		}
+	} 
 	
 	// Check for a password and match against the confirmed password:
 	if (!empty($_POST['pass1'])){
