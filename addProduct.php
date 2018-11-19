@@ -8,7 +8,7 @@ if (!$_POST) {
 	$display_block = <<<END_OF_TEXT
 	<form method="post" action="$_SERVER[PHP_SELF]">
 	<fieldset>
-	<legend>Product Code:</legend>
+	<legend>Product ID:</legend>
 	<input type="text" name="prodCode" size="20" maxlength="40" required="required" /><br/>
 	</fieldset>		
 	<br/>
@@ -52,7 +52,7 @@ if (!$_POST) {
 END_OF_TEXT;
 } else if ($_POST) {
 	//time to add to tables, so check for required fields
-	if (($_POST['prodCode'] == "") || ($_POST['prodName'] == "")) {
+	if (($_POST['prodID'] == "") || ($_POST['prodName'] == "")) {
 		header("Location: addProduct.php");
 		exit;
 	}
@@ -92,12 +92,12 @@ END_OF_TEXT;
 		$add_desc_res = mysqli_query($dbc, $add_desc_sql) or die(mysqli_error($dbc));
 	}
 	if($_POST['submit']){
-		$imagename = mysqli_real_escape_string($_FILES["image"]["name"]);
-		$imagedata=mysql_real_escape_string(file_get_contents($_FILES["image"]["tmp_name"]));
-		$imagetype=mysql_real_escape_string($_FILES["image"]["type"]);
+	$imagename = mysqli_real_escape_string($_FILES["image"]["name"]);
+	$imagedata=mysql_real_escape_string(file_get_contents($_FILES["image"]["tmp_name"]));
+	$imagetype=mysql_real_escape_string($_FILES["image"]["type"]);
 	
-		if(substr($imagetype,0,5)=="image")
-		{
+	if(substr($imagetype,0,5)=="image")
+	{
 
 	
 	$imagename=mysql_real_escape_string($_FILES["image"]["name"]);
