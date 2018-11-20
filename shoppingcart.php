@@ -19,9 +19,16 @@ $db_handle = new DBController();
 	<button class="iconbox" onclick="window.location.href='shoppingcart.php';">Shopping Cart<img class="icon" src="images/shoppingcart.png"></button>
 	<a href="index.html"><img class="logo" src="images/logo_transparent.png" alt="Dream Realm"></a>
 	<div class="topnav">
+		<?php 
+			if (isset($_SESSION["user"])&&$_SESSION["user"]=="customer") {
+				echo "Hi, ".$_COOKIE['custName'];
+				echo "&emsp;<a href=\"custLogout.php\";>Logout</a>";
+			} else {
+		?>
 		<button class="lower-button" id="register" onclick="window.location.href='custRegister.php';">New to our website? Register as our new member here!</button>
 		<button class="lower-button" id="login" onclick="window.location.href='custLogin.php';">Already a member? Login here!</button>
 		<button class="lower-button" id="login-admin" onclick="window.location.href='adminLogin.php';">Login as admin</button>
+		<?php }?>
 	</div>	
 </div>
 <?php 	
@@ -114,7 +121,7 @@ if(isset($_SESSION["cart_item"])){
 	">Finished shopping? Check out your items!</button>
 </div>
 	<div id = "footer">
-		<a href="index.html">Home</a>&emsp;
+		<a href="index.php">Home</a>&emsp;
 		<a href="plushies.php">Plushies</a>&emsp;
 		<a href="lego.php">Lego</a>&emsp;
 		<a href="pop.php">Funko Pop</a>&emsp;
