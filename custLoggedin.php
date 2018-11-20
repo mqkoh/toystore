@@ -18,12 +18,3 @@ echo "<h1>Logged In!</h1>
 <p><a href=\"index.html\">Home</a></p> ";
 
 ?>
-<style>
-body {
-	text-align:center;
-	background-size: 100%;
-	background-color:  #bf99d9;
-	font-family: 'Nunito', sans-serif;
-	margin: 20pt;
-	}
-</style>

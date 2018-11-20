@@ -18,11 +18,3 @@ if (isset($errors) && !empty($errors)) {
 	<p><input type="submit" name="submit" value="Login" /></p>
 </form>
 <style>
-body {
-	text-align:center;
-	background-size: 100%;
-	background-color:  #bf99d9;
-	font-family: 'Nunito', sans-serif;
-	margin: 20pt;
-	}
-</style>
