@@ -109,3 +109,24 @@ if (mysqli_num_rows($r) == 1) { // Valid user ID, show the form.
 mysqli_close($dbc);
 		
 ?>
+<style>
+h1{
+	font-family:Charcoal,Sans-serif;
+  	left: 0;
+  	top: 50%;
+  	width: 100%;
+  	text-align: center;
+ 	color: #000000;
+}
+
+div{
+	border:1px solid;
+	padding:10px;
+	box-shadow:5px 10px #888888;
+	background-color:#33BAFF;
+}
+body{
+	text-align:center;
+	padding-top:200px;
+ }
+</style>
