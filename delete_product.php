@@ -5,10 +5,10 @@ $page_title = 'Delete Product';
 echo '<h1>Delete Product</h1>';
 
 // Check for a valid product ID, through GET or POST:
-if ( (isset($_GET['id'])) && (is_numeric($_GET['id'])) ) { // From viewCustomer.php
-	$id = $_GET['id'];
-} elseif ( (isset($_POST['id'])) && (is_numeric($_POST['id'])) ) { // Form submission.
-	$id = $_POST['id'];
+if ( (isset($_GET['prodID'])) && (is_numeric($_GET['prodID'])) ) { // From viewProduct.php
+	$id = $_GET['prodID'];
+} elseif ( (isset($_POST['prodID'])) && (is_numeric($_POST['prodID'])) ) { // Form submission.
+	$id = $_POST['prodID'];
 } else { // No valid ID, kill the script.
 	echo '<p class="error">This page has been accessed in error.</p>';
 	exit();
