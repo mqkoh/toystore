@@ -22,9 +22,9 @@ $db_handle = new DBController();
 		<button class="topnav-button" id="categories" onclick="window.location.href='plushies.php';">Plushies</button>
 		<button class="topnav-button" id="categories" onclick="window.location.href='lego.php';">Lego</button>
 		<button class="topnav-button" id="categories" onclick="window.location.href='pop.php';">Pop</button>
-		<button class="topnav-button" id="register" onclick="window.location.href='custRegister.php';">New to our website? Register as our new member here!</button>
-		<button class="topnav-button" id="login" onclick="window.location.href='custLogin.php';">Already a member? Login here!</button>
-		<button class="topnav-button" id="login-admin" onclick="window.location.href='adminLogin.php';">Login as admin</button>
+		<button class="lower-button" id="register" onclick="window.location.href='custRegister.php';">New to our website? Register as our new member here!</button>
+		<button class="lower-button" id="login" onclick="window.location.href='custLogin.php';">Already a member? Login here!</button>
+		<button class="lower-button" id="login-admin" onclick="window.location.href='adminLogin.php';">Login as admin</button>
 	</div>
 </div>
 <?php 	
@@ -103,5 +103,7 @@ if(isset($_SESSION["cart_item"])){
 }
 ?>
 </div>
+<button onclick="javascript:history.go(-1)">Continue Shopping</button>
+
 </body>
 </html>

@@ -19,13 +19,13 @@ body, html{
 	display: inline-block;
 }
 
-.topnav-button {
+.lower-button {
 	padding: 5px;
 	font-family: 'Nunito', sans-serif;
 	border-radius: 10%;
 }
 
-.topnav-button:hover {
+.lower-button:hover {
 	background-color: #AEA17D;
 }
 
@@ -49,11 +49,11 @@ footer{
 }
 
 .about {
-	height: 45vh;
+	height: 60vh;
 	text-align: justify;
 	background-image: url("images/background1.jpg");
 	opacity: 0.8;
-	padding: 50px;
+	padding: 30px;
 	background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
