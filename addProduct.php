@@ -51,12 +51,11 @@ if (!$_POST) {
 	</form>
 END_OF_TEXT;
 } else if ($_POST) {
-	/*redundant with required=required"
 	//time to add to tables, so check for required fields
 	if (($_POST['prodCode'] == "") || ($_POST['prodName'] == "")) {
 		header("Location: addProduct.php");
 		exit;
-	}*/
+	}
 	
 	$errors = array();
 	
@@ -79,10 +78,6 @@ END_OF_TEXT;
 	if(substr($imagetype,0,5)!=="image"){
 		$errors[] = 'Please upload an image file as the product image!';
 	}
-	
-	/*connect to database
-	doDB();
-	*/
 		
 	//create clean versions of input strings
 	$safe_code = mysqli_real_escape_string($dbc, $_POST['prodCode']);
@@ -90,13 +85,31 @@ END_OF_TEXT;
 	$safe_category = mysqli_real_escape_string($dbc, $_POST['prodCategory']);
 	$safe_desc = mysqli_real_escape_string($dbc, $_POST['prodDesc']);
 	
-	//add to product table
-	$add_product_sql = "INSERT INTO product (prodCode, prodName, prodCategory, prodPrice, prodDesc, prodImage)
-						VALUES ('".$safe_code."', '".$safe_name."', '".$safe_category."', '".$safe_price."', '".$safe_desc."', '".$imagedata."')";
-	$add_product_res = mysqli_query($dbc, $add_product_sql) or die(mysqli_error($dbc));
-	
-	mysqli_close($dbc);
-	$display_block = "<p>Your entry has been added.  Would you like to <a href=\"addproduct.php\">add another</a>?</p>";
+	if (empty($errors)) {
+		//add to product table
+		$add_product_sql = "INSERT INTO product (prodCode, prodName, prodCategory, prodPrice, prodDesc, prodImage)
+							VALUES ('".$safe_code."', '".$safe_name."', '".$safe_category."', '".$safe_price."', '".$safe_desc."', '".$imagedata."')";
+		$add_product_res = mysqli_query($dbc, $add_product_sql) or die(mysqli_error($dbc));
+		
+		if ($add_product_res) {
+			$display_block = "<p>Your entry has been added.  Would you like to <a href=\"addproduct.php\">add another</a>?</p>";
+		} else {
+			echo "<h1>System Error</h1>
+				<p class='error'>The product could not be added due to a system error. We apologize for any inconvenience caused.</p>
+				<p>" . mysqli_error($dbc) . "<br /><br />Query: " . $add_product_sql . "</p>";
+		}
+		
+	} else {
+		echo '<h1>Error!</h1>
+			<p class="error">The following error(s) occurred:<br />';
+		foreach ($errors as $msg) { // Print each error.
+			echo " - $msg<br />\n";
+		}
+		echo '</p><p>Please <a href="addproduct.php">try again</a>.</p><p><br /></p>';
+		
+	}
+		
+	mysqli_close($dbc); // Close the database connection.
 
 }
 ?>
@@ -109,5 +122,7 @@ END_OF_TEXT;
 <body>
 <h1>Add an Entry</h1>
 <?php echo $display_block; ?>
+<br>
+<a href="index.php">Back to Home Page</a>
 </body>
 </html>
