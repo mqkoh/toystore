@@ -17,3 +17,25 @@ if (isset($errors) && !empty($errors)) {
 	<p>Password:<input type="password" name="custPW" size="20" maxlength="40" /></p>
 	<p><input type="submit" name="submit" value="Login" /></p>
 </form>
+<style>
+h1{
+	font-family:Charcoal,Sans-serif;
+  	left: 0;
+  	top: 50%;
+  	width: 100%;
+  	text-align: center;
+ 	color: #000000;
+}
+
+div{
+	border:1px solid;
+	padding:10px;
+	box-shadow:5px 10px #888888;
+}
+body{
+	text-align:center;
+	background-color:#bf99d9;
+	padding-top:300px;
+	
+ }
+</style>
