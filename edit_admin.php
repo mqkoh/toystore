@@ -1,7 +1,7 @@
 <?php 
 // This page is for editing a user record.
 
-$page_title = 'Edit admin';
+$page_title = 'Edit Admin';
 echo '<h1>Edit admin</h1>';
 
 // Check for a valid admin ID, through GET or POST:
