@@ -22,7 +22,7 @@ echo "<h1>Logged In!</h1>";
 echo "<br><br>";
 echo "<div>
 		<p>You are now logged in, {$_COOKIE['adminName']}!</p>
-		<p><a href=\"adminLogout.php\";>Logout</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=\"index.html\">Home</a></p>
+		<p><a href=\"adminLogout.php\";>Logout</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=\"index_admin.html\">Home</a></p>
 	</div>";
 ?>
 <html>
@@ -40,11 +40,11 @@ div{
 	border:1px solid;
 	padding:10px;
 	box-shadow:5px 10px #888888;
+	background-color:#bf99d9;
 }
 body{
 	text-align:center;
-	background-color:#bf99d9;
-	padding-top:300px;
+	padding-top:200px;
 	
  }
 </style>
