@@ -8,7 +8,7 @@ $connection = $db_handle->connectDB();
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Dream Realm - Pop</title>
+	<title>Dream Realm - Plushies</title>
 	<link rel="icon" href="images/favicon.png">
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script src="script.js" type="text/javascript"></script>
@@ -19,15 +19,19 @@ $connection = $db_handle->connectDB();
 <div class="top">
 	<a href="index.html"><img class="logo" src="images/logo_transparent.png" alt="Dream Realm"></a>
 	<div class="topnav">
+		<button class="topnav-button" id="home" onclick="window.location.href='index.html';">Home</button>
+		<button class="topnav-button" id="categories" onclick="window.location.href='plushies.php';">Plushies</button>
+		<button class="topnav-button" id="categories" onclick="window.location.href='lego.php';">Lego</button>
+		<button class="topnav-button" id="categories" onclick="window.location.href='pop.php';">Pop</button>
 		<button class="topnav-button" id="register" onclick="window.location.href='custRegister.php';">New to our website? Register as our new member here!</button>
-		<button class="topnav-button" id="login" onclick="#">Already a member? Login here!</button>
-	</div>	
-</div>
-
+		<button class="topnav-button" id="login" onclick="window.location.href='custLogin.php';">Already a member? Login here!</button>
+		<button class="topnav-button" id="login-admin" onclick="window.location.href='adminLogin.php';">Login as admin</button>
+	</div>
+</div>	
 <div id="product-grid">
-	<div class="txt-heading">Products</div>
+	<div class="txt-heading">Dream Realm - Plushies</div>
 	<?php
-	$product_array = $db_handle->runQuery("SELECT * FROM product WHERE prodCategory = 'Funko Pop' ORDER BY prodID ASC");
+	$product_array = $db_handle->runQuery("SELECT * FROM product WHERE prodCategory = 'Plushies' ORDER BY prodID ASC");
 	
 	if (!empty($product_array)) { 
 		foreach($product_array as $key=>$value){
@@ -51,7 +55,6 @@ $connection = $db_handle->connectDB();
 	}
 	?>
 </div>
-
 <script src="script.js" type="text/javascript"></script>
 </body>
 </html>
