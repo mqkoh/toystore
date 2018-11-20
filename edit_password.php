@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$num = @mysqli_num_rows($r);
 		if ($num == 1) { // Match was made.
 	
-			// Get the user_id:
+			// Get the customer id:
 			$row = mysqli_fetch_array($r, MYSQLI_NUM);
 
 			// Make the UPDATE query:
