@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 // This page lets customer change their password.
 
@@ -95,7 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }// End of the main Submit conditional.
 ?>
 <h1>Update your details</h1>
-<form action="password.php" method="post">
+<form action="edit_password.php" method="post">
 	
 	<fieldset>
 	<legend><b>Login Details</b></legend>

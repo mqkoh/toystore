@@ -24,6 +24,7 @@ $connection = $db_handle->connectDB();
 			if (isset($_COOKIE['custName'])) {
 				echo "Hi, ".$_COOKIE['custName'];
 				echo "&emsp;<a href=\"custLogout.php\";>Logout</a>";
+				echo "<br><a href=\"edit_password.php\";>Change your password?</a>";
 			} else {
 		?>
 		<button class="lower-button" id="register" onclick="window.location.href='custRegister.php';">New to our website? Register as our new member here!</button>

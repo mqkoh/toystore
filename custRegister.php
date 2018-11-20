@@ -1,4 +1,5 @@
-<?php 
+<?php
+ 
 // This script performs an INSERT query to add a record to the customer table.
 
 $page_title = 'Customer Register';
@@ -17,7 +18,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$custName_pattern = "/^[A-Za-z0-9]{5,20}$/";
 
 		if (preg_match ($custName_pattern, $_POST['custName'])){
-			echo "Your username is correct!";
 			$cn = mysqli_real_escape_string($dbc, trim($_POST['custName'])); // capture the string
 		} else{
 			$errors[]= "Wrong username format!";
@@ -46,14 +46,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	if (empty($_POST['custEmail'])){
 		$errors[] = 'You forgot to enter your email address.';
 	} else {
-		//$email_pattern = "/^([a-zA-Z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/";
-		//$email_pattern = "/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/";
 		$email_pattern = "/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix";
 		
 		
 		if (preg_match ($email_pattern, $_POST['custEmail'])){
 			$e = mysqli_real_escape_string($dbc, trim($_POST['custEmail']));
-			echo "Your email is ok.";
 		} else{
 			$errors[] = 'Wrong email address format!';
 		}
@@ -65,9 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	 }else {
 		$custPhone_pattern ="/^01[0-9]1*-\d{7}$/";
 
-
 		if (preg_match ($custPhone_pattern, $_POST['custPhone'])){
-			echo "Your phone number is correct!";
 			$cp = mysqli_real_escape_string($dbc, trim($_POST['custPhone'])); // capture the string
 		} else{
 			$errors[]= "Wrong phone number format!";
