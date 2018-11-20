@@ -20,7 +20,7 @@ echo "<h1>Logged Out!</h1>
 <p>You are now logged out, {$_COOKIE['custName']}!</p>";
 
 ?>
-</div>
+
 <style>
 h1{
 	font-family:Charcoal,Sans-serif;
@@ -31,7 +31,7 @@ h1{
  	color: #000000;
 }
 
-div{
+p{
 	border:1px solid;
 	padding:10px;
 	box-shadow:5px 10px #888888;
