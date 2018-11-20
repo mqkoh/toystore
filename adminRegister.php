@@ -21,8 +21,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	if (empty($_POST['adminName'])) {
 		$errors[] = 'You forgot to enter your name.';
 	} else {
-		$an = mysqli_real_escape_string($dbc, trim($_POST['adminName'])); // capture the string
-	}
+		$adminName_pattern = "/^[A-Za-z0-9]{5,20}$/";
+		
+		if (preg_match ($adminName_pattern, $_POST['adminName'])){
+			$an = mysqli_real_escape_string($dbc, trim($_POST['adminName'])); // capture the string
+		} else{
+			$errors[]= "Wrong username format!";
+		}
+	} 
 	
 	// Check for a password and match against the confirmed password:
 	if (!empty($_POST['pass1'])){
@@ -46,15 +52,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	if (empty($_POST['adminEmail'])){
 		$errors[] = 'You forgot to enter your email address.';
 	}else{
-		$ae = mysqli_real_escape_string($dbc, trim($_POST['adminEmail']));
-	}
+		$email_pattern = "/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix";
+		
+		
+		if (preg_match ($email_pattern, $_POST['custEmail'])){
+			$ae = mysqli_real_escape_string($dbc, trim($_POST['adminEmail']));
+			} else{
+				$errors[] = 'Wrong email address format!';
+			}
+			}
 	
 	// Check for phone number:
 	 if (empty($_POST['adminPhone'])){
 	 	$errors[] = 'You forgot to enter your phone number.';
 	 }else{
+	 	$custPhone_pattern ="/^01[0-9]1*-\d{7}$/";
+	 	
+	 	if (preg_match ($custPhone_pattern, $_POST['custPhone'])){
 	 	$ap = mysqli_real_escape_string($dbc, trim($_POST['adminPhone']));
-	 }
+	 	} else{
+			$errors[]= "Wrong phone number format!";
+		}
+	} 
 	 
 	// Check for address:
 	if(empty($_POST['adminAdd'])){
