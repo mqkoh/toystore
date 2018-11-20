@@ -1,7 +1,7 @@
 <?php 
 // This page is for deleting a customer record.
 
-$page_title = 'Delete  Customer';
+$page_title = 'Delete Customer';
 echo '<h1>Delete Customer</h1>';
 
 // Check for a valid customer ID, through GET or POST:
