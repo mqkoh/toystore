@@ -5,10 +5,10 @@ $page_title = 'Delete Customer';
 echo '<h1>Delete Customer</h1>';
 
 // Check for a valid customer ID, through GET or POST:
-if ( (isset($_GET['id'])) && (is_numeric($_GET['id'])) ) { // From viewCustomer.php
-	$id = $_GET['id'];
-} elseif ( (isset($_POST['id'])) && (is_numeric($_POST['id'])) ) { // Form submission.
-	$id = $_POST['id'];
+if ( (isset($_GET['custID'])) && (is_numeric($_GET['custID'])) ) { // From viewCustomer.php
+	$id = $_GET['custID'];
+} elseif ( (isset($_POST['custID'])) && (is_numeric($_POST['custID'])) ) { // Form submission.
+	$id = $_POST['custID'];
 } else { // No valid ID, kill the script.
 	echo '<p class="error">This page has been accessed in error.</p>';
 	exit();
