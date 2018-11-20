@@ -21,8 +21,8 @@ $page_title = 'Logged Out!';
 
 // Print a customized message:
 echo "<h1>Logged Out!</h1>
-<p>You are now logged out, {$_COOKIE['custName']}!</p>
-<a href=\"index.php\";>Back to Home Page</a>";
+<p>You are now logged out, {$_COOKIE['custName']}!<br><br>
+<a href=\"index.php\";>Back to Home Page</a></p>";
 
 ?>
 
