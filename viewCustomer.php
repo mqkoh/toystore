@@ -51,7 +51,7 @@ $sort = (isset($_GET['sort'])) ? $_GET['sort'] : 'rd';
 			$order_by = 'registration_date ASC';
 			break;
 		default:
-			$order_by = 'registration_data ASC';
+			$order_by = 'registration_date ASC';
 			$sort = 'rd';
 	}
 
