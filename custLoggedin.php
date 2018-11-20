@@ -39,13 +39,13 @@ h1{
 
 div{
 	border:1px solid;
+	background-color:#bf99d9;
 	padding:10px;
 	box-shadow:5px 10px #888888;
 }
 body{
 	text-align:center;
-	background-color:#bf99d9;
-	padding-top:300px;
+	padding-top:200px;
 	
  }
 </style>
