@@ -5,7 +5,7 @@ $page_title = 'Delete Admin';
 echo '<h1>Delete Admin</h1>';
 
 // Check for a valid customer ID, through GET or POST:
-if ( (isset($_GET['id'])) && (is_numeric($_GET['id'])) ) { // From viewCustomer.php
+if ( (isset($_GET['id'])) && (is_numeric($_GET['id'])) ) { // From viewAdmin.php
 	$id = $_GET['id'];
 } elseif ( (isset($_POST['id'])) && (is_numeric($_POST['id'])) ) { // Form submission.
 	$id = $_POST['id'];
@@ -87,7 +87,7 @@ h1{
 }
 fieldset{
 	text-align:left;
-	padding-left:700px;
+	padding-left:70px;
 }
 body{
 	text-align:center;

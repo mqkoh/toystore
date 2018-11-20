@@ -87,7 +87,7 @@ h1{
 }
 fieldset{
 	text-align:left;
-	padding-left:700px;
+	padding-left:70px;
 }
 body{
 	text-align:center;

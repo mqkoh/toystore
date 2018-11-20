@@ -5,7 +5,7 @@ $page_title = 'Edit Admin';
 echo '<h1>Edit admin</h1>';
 
 // Check for a valid admin ID, through GET or POST:
-if ( (isset($_GET['id'])) && (is_numeric($_GET['id'])) ) { // From viewCustomer.php
+if ( (isset($_GET['id'])) && (is_numeric($_GET['id'])) ) { // From viewAdmin.php
 	$id = $_GET['id'];
 } elseif ( (isset($_POST['id'])) && (is_numeric($_POST['id'])) ) { // Form submission.
 	$id = $_POST['id'];

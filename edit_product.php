@@ -5,7 +5,7 @@ $page_title = 'Edit product';
 echo '<h1>Edit Product</h1>';
 
 // Check for a valid product ID, through GET or POST:
-if ( (isset($_GET['id'])) && (is_numeric($_GET['id'])) ) { // From viewCustomer.php
+if ( (isset($_GET['id'])) && (is_numeric($_GET['id'])) ) { // From viewProduct.php
 	$id = $_GET['id'];
 } elseif ( (isset($_POST['id'])) && (is_numeric($_POST['id'])) ) { // Form submission.
 	$id = $_POST['id'];
