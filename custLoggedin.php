@@ -11,34 +11,8 @@ if (!isset($_COOKIE['custID'])) {
 }
 
 // Print a customized message:
-echo "<h1>Logged In!</h1>";
-echo "<br><br>";
-echo "<div>
-		<p>You are now logged in, {$_COOKIE['custName']}!</p>
-		<p><a href=\"custLogout.php\";>Logout</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=\"index.html\">Home</a></p>
-	</div>";
-?>
-<html>
-<style>
-h1{
-	font-family:Charcoal,Sans-serif;
-  	left: 0;
-  	top: 50%;
-  	width: 100%;
-  	text-align: center;
- 	color: #000000;
-}
+echo "<h1>Logged In!</h1>
+<p>You are now logged in, {$_COOKIE['custName']}!</p>
+<p><a href=\"custLogout.php\">Logout</a></p>";
 
-div{
-	border:1px solid;
-	padding:10px;
-	box-shadow:5px 10px #888888;
-}
-body{
-	text-align:center;
-	background-color:#bf99d9;
-	padding-top:300px;
-	
- }
-</style>
-</html>
+?>

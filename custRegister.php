@@ -126,7 +126,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 } // End of the main Submit conditional.
 ?>
 <h1>Register Customer</h1>
-<div>
 <form action="custRegister.php" method="post">
 
 	<h5>Dear customers, <br/> Kindly confirm all your details before you click the register button.<br/>
@@ -141,7 +140,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	<p>Address			: <input type="text" name="custAdd" size="30" maxlength="75" value="<?php if (isset($_POST['custAdd'])) echo $_POST['custAdd']; ?>" /></p><br>
 	<p><input type="submit" name="submit" value="Register" /></p>  
 </form>
-</div>
+
 <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 <style>
 body {
@@ -151,25 +150,4 @@ body {
 	font-family: 'Nunito', sans-serif;
 	margin: 20pt;
 	}
-	
-h1{
-	font-family:Charcoal,Sans-serif;
-  	left: 0;
-  	top: 50%;
-  	width: 100%;
-  	text-align: center;
- 	color: #000000;
-}
-
-div{
-	border:1px solid;
-	padding:10px;
-	box-shadow:5px 10px #888888;
-}
-body{
-	text-align:center;
-	background-color:#bf99d9;
-	padding-top:300px;
-	
- }
 </style>
