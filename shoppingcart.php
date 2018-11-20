@@ -61,6 +61,9 @@ switch($_GET["action"]) {
 	break;
 	case "empty":
 		unset($_SESSION["cart_item"]);
+	break;
+	case "checkout":
+		unset($_SESSION["cart_item"]);
 	break;	
 }
 }
@@ -102,8 +105,8 @@ if(isset($_SESSION["cart_item"])){
 <?php
 }
 ?>
+<button class="continue" onclick="javascript:history.go(-1)">Continue Shopping</button>
+<button class="check-out" onclick="checkout()">Finished shopping? Check out your items!</button>
 </div>
-<button onclick="javascript:history.go(-1)">Continue Shopping</button>
-
 </body>
 </html>
