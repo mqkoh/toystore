@@ -1,5 +1,5 @@
 <?php
-session_start()
+session_start();
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -14,10 +14,10 @@ session_start()
 
 <div class="top">
 	<button class="iconbox" onclick="window.location.href='shoppingcart.php';">Shopping Cart<img class="icon" src="images/shoppingcart.png"></button>
-	<a href="index.html"><img class="logo" src="images/logo_transparent.png" alt="Dream Realm"></a>
+	<a href="index.php"><img class="logo" src="images/logo_transparent.png" alt="Dream Realm"></a>
 	<div class="topnav">
 		<?php 
-			if (isset($_SESSION["user"])&&$_SESSION["user"]=="customer") {
+			if (isset($_COOKIE['custName'])) {
 				echo "Hi, ".$_COOKIE['custName'];
 				echo "&emsp;<a href=\"custLogout.php\";>Logout</a>";
 			} else {

@@ -2,7 +2,7 @@
 var url = window.location.pathname;
 var filename = url.substring(url.lastIndexOf('/')+1);
 
-if (filename == "index.html") {
+if (filename == "index.php") {
 	var slideIndex = 1;
 	showDivs(slideIndex);
 

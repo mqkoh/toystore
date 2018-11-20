@@ -1,4 +1,5 @@
 <?php 
+session_start();
 
 // If no cookie is present, redirect the user:
 if (!isset($_COOKIE['custID'])) {
@@ -10,7 +11,9 @@ if (!isset($_COOKIE['custID'])) {
 } else { // Delete the cookies:
 	setcookie ('custID', '', time() - 3600);
 	setcookie ('custName', '', time() - 3600);
-	session_destroy();
+	if (isset($_SESSION)) {
+		session_destroy();
+	}
 }
 
 // Set the page title and include the HTML header:

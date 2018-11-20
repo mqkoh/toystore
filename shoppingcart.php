@@ -20,7 +20,7 @@ $db_handle = new DBController();
 	<a href="index.html"><img class="logo" src="images/logo_transparent.png" alt="Dream Realm"></a>
 	<div class="topnav">
 		<?php 
-			if (isset($_SESSION["user"])&&$_SESSION["user"]=="customer") {
+			if (isset($_COOKIE['custName'])) {
 				echo "Hi, ".$_COOKIE['custName'];
 				echo "&emsp;<a href=\"custLogout.php\";>Logout</a>";
 			} else {
