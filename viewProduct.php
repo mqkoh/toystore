@@ -1,9 +1,9 @@
 <?php 
 // This script retrieves all the records from the users table.
 
-$page_title = 'View the Current Customers';
+$page_title = 'View Products';
 
-echo "<h1 style='text-align:center;'>Customer's Address Book</h1>";
+echo "<h1 style='text-align:center;'>Product's Address Book</h1>";
 
 //Connect to database
 require ('mysqli_connect.php');
@@ -16,7 +16,7 @@ if (isset($_GET['p']) && is_numeric($_GET['p'])) { // Already been determined.
 	$pages = $_GET['p'];
 } else { // Need to determine.
  	// Count the number of records:
-	$q = "SELECT COUNT(custID) FROM customer";
+	$q = "SELECT COUNT(prodID) FROM product";
 	$r = @mysqli_query ($dbc, $q);
 	$row = @mysqli_fetch_array ($r, MYSQLI_NUM);
 	$records = $row[0];
@@ -42,22 +42,22 @@ $sort = (isset($_GET['sort'])) ? $_GET['sort'] : 'rd';
 // Determine the sorting order:
 	switch($sort){
 		case 'id':
-			$order_by = 'custID ASC';
+			$order_by = 'prodID ASC';
 			break;
-		case 'cn':
-			$order_by = 'custName ASC';
+		case 'pc':
+			$order_by = 'prodCode ASC';
 			break;
-		case 'rd':
-			$order_by = 'registration_date ASC';
+		case 'pn':
+			$order_by = 'prodName ASC';
 			break;
 		default:
-			$order_by = 'registration_data ASC';
-			$sort = 'rd';
+			$order_by = 'prodCode ASC';
+			$sort = 'pc';
 	}
 
 // Define the query:
-$q = "	SELECT custID, custName,custPW,custGender,custEmail,custPhone,custAdd,DATE_FORMAT(registration_date, '%M %d, %Y') AS dr
-		FROM customer
+$q = "	SELECT prodID,prodCode,prodName,prodCategory,prodPrice,prodDesc
+		FROM product
 		ORDER BY $order_by LIMIT $start, $display";
 $r = @mysqli_query ($dbc, $q); // Run the query.
 
@@ -65,13 +65,12 @@ $r = @mysqli_query ($dbc, $q); // Run the query.
 $bg = '#6495ED';
 echo '<table align="center" cellspacing="3" cellpadding="3" width="75%">
 <tr bgcolor="'.$bg.'">
-	<td align="left"><b><a href="viewCustomer.php?sort=id">Customer ID</a></b></td>
-	<td align="left"><b><a href="viewCustomer.php?sort=cn">Customer Name</a></b></td>
-	<td align="left"><b>Gender</b></td>
-	<td align="left"><b>Email</b></td>
-	<td align="left"><b>Phone</b></td>
-	<td align="left"><b>Address</b></td>
-	<td align="left"><b><a href="viewCustomer.php?sort=rd">Date Registered</a></b></td>
+	<td align="left"><b><a href="viewProduct.php?sort=id">Product ID</a></b></td>
+	<td align="left"><b><a href="viewProduct.php?sort=pc">Product Code</a></b></td>
+	<td align="left"><b><a href="viewProduct.php?sort=pn">Product Name</a></b></td>
+	<td align="left"><b>Category</b></td>
+	<td align="left"><b>Price (RM)</b></td>
+	<td align="left"><b>Description</b></td>
 	<td align="left"><b>Edit</b></td>
 	<td align="left"><b>Delete</b></td>
 </tr>
@@ -82,15 +81,14 @@ $bg = '#eeeeee';
 while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
 	$bg = ($bg=='#eeeeee' ? '#ffffff' : '#eeeeee');
 		echo '<tr bgcolor="' . $bg . '">
-		<td align="left">'.$row['custID'].'</td>
-		<td align="left">'.$row['custName'].'</td>
-		<td align="left">'.$row['custGender'].'</td>
-		<td align="left">'.$row['custEmail'].'</td>
-		<td align="left">'.$row['custPhone'].'</td>
-		<td align="left">'.$row['custAdd'].'</td>
-		<td align="left">'.$row['dr'].'</td>
-		<td align="left"><a href="edit_cust.php?id='.$row['custID'].'">Edit</a></td>
-		<td align="left"><a href="delete_cust.php?id='.$row['custID'].'">Delete</a></td>
+		<td align="left">'.$row['prodID'].'</td>
+		<td align="left">'.$row['prodCode'].'</td>
+		<td align="left">'.$row['prodName'].'</td>
+		<td align="left">'.$row['prodCategory'].'</td>
+		<td align="left">'.$row['prodPrice'].'</td>
+		<td align="left">'.$row['prodDesc'].'</td>
+		<td align="left"><a href="edit_product.php?id='.$row['prodID'].'">Edit</a></td>
+		<td align="left"><a href="delete_product.php?id='.$row['prodID'].'">Delete</a></td>
 	</tr>
 	';
 } // End of WHILE loop.
@@ -107,13 +105,13 @@ if ($pages > 1) {
 
 	// If it's not the first page, make a Previous button:
 	if ($current_page != 1) {
-		echo '<a href="viewCustomer.php?s=' . ($start - $display) . '&p=' . $pages . '&sort=' . $sort . '">Previous</a> ';
+		echo '<a href="viewProduct.php?s=' . ($start - $display) . '&p=' . $pages . '&sort=' . $sort . '">Previous</a> ';
 	}
 
 	// Make all the numbered pages:
 	for ($i = 1; $i <= $pages; $i++) {
 		if ($i != $current_page) {
-			echo '<a href="viewCustomer.php?s=' . (($display * ($i - 1))) . '&p=' . $pages . '&sort=' . $sort . '">' . $i . '</a> ';
+			echo '<a href="viewProduct.php?s=' . (($display * ($i - 1))) . '&p=' . $pages . '&sort=' . $sort . '">' . $i . '</a> ';
 		} else {
 			echo $i . ' ';
 		}
@@ -121,7 +119,7 @@ if ($pages > 1) {
 
 	// If it's not the last page, make a Next button:
 	if ($current_page != $pages) {
-		echo '<a href="viewCustomer.php?s=' . ($start + $display) . '&p=' . $pages . '&sort=' . $sort . '">Next</a>';
+		echo '<a href="viewProduct.php?s=' . ($start + $display) . '&p=' . $pages . '&sort=' . $sort . '">Next</a>';
 	}
 
 	echo '</p>'; // Close the paragraph.

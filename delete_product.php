@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		if($_POST['sure'] == 'Yes'){
 			
 			// Make the query:
-			$q = "DELETE FROM product WHERE prodID = $id LIMIT 1";
+			$q = "DELETE * FROM product WHERE prodID = $id LIMIT 1";
 			$r = @mysqli_query($dbc, $q);
 			
 			if(mysqli_affected_rows($dbc) == 1){// If it ran OK.
@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 } else { // Show the form.
 
 	// Retrieve the product's information:
-	$q = "SELECT prodCode,prodName,prodDesc,prodImage FROM product WHERE prodID=$id";
+	$q = "SELECT prodCode,prodName,prodDesc FROM product WHERE prodID=$id";
 	$r = @mysqli_query ($dbc, $q);
 
 	if (mysqli_num_rows($r) == 1) { // Valid user ID, show the form.
@@ -56,7 +56,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				<p><b>Product Code</b>&nbsp		: $row[0]</p>
 				<p><b>Product Name</b>&nbsp		: $row[1]</p>
 				<p><b>Product Description</b>&nbsp	: $row[2]</p>
-				<p><b>Product Image</b>&nbsp	: $row[3]</p>
 			</fieldset><br/>
 			Are you sure you want to delete this product?";
 		
@@ -77,3 +76,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 mysqli_close($dbc);
 		
 ?>
+<style>
+h1{
+	font-family:Charcoal,Sans-serif;
+  	left: 0;
+  	top: 50%;
+  	width: 100%;
+  	text-align: center;
+ 	color: #000000;
+}
+fieldset{
+	text-align:left;
+	padding-left:700px;
+}
+body{
+	text-align:center;
+	padding-top:200px;
+ }
+</style>
