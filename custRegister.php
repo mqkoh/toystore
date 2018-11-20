@@ -1,4 +1,5 @@
 <?php
+session_start();
  
 // This script performs an INSERT query to add a record to the customer table.
 
@@ -101,6 +102,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 						
 		} // End of if ($r) IF.
 		
+		echo '<a href="custLogin.php">Proceed to Login</a>&emsp;<a href="index.php">Back to Home Page</a>';
+		
 		mysqli_close($dbc); // Close the database connection.
 
 		exit();
@@ -115,6 +118,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		echo '</p><p>Please try again.</p><p><br /></p>';
 		
 	} // End of if (empty($errors)) IF.
+	
+	echo '<a href="custLogin.php">Proceed to Login</a>&emsp;<a href="index.php">Back to Home Page</a>';
 	
 	mysqli_close($dbc); // Close the database connection.
 
@@ -172,7 +177,7 @@ body{
 form {
 	padding-top:30px;
 	padding-right:50px;
-	padding-left:580px;
+	padding-left:50px;
 	padding-bottom:30px;
 	text-align:left;
 	font-size:18px;
