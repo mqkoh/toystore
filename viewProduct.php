@@ -4,6 +4,7 @@
 $page_title = 'View Products';
 
 echo "<h1 style='text-align:center;'>Product's Address Book</h1>";
+echo "<p style='text-align:center;'><a href=\"addProduct.php\";>Add a New Product</a></p>";
 
 //Connect to database
 require ('mysqli_connect.php');
@@ -100,7 +101,7 @@ mysqli_close($dbc);
 // Make the links to other pages, if necessary.
 if ($pages > 1) {
 
-	echo '<br /><p>';
+	echo "<br /><p style='text-align:center;'>";
 	$current_page = ($start/$display) + 1;
 
 	// If it's not the first page, make a Previous button:

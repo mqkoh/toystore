@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				<input type="hidden" name="prodID" value="' . $id . '" />
 			</form>';
 	
-	} else { // Not a valid user ID.
+	} else { // Not a valid product ID.
 		echo '<p class="error">This page has been accessed in error.</p>';
 	}
 
