@@ -75,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			// Print a message:
 			echo "<h1 style='text-align:center;'>Thank you!</h1>";
 			echo "<p style='text-align:center;'>You have registered successfully.</p>";
-			echo "<p style='text-align:center;'><a href='adminLogin.php'>Proceed to Login</a>&emsp;<a href='viewAdmin.php'>View Admin</a></p>";
+			
 		} else { // If it did not run OK.
 			
 			// Public message:
@@ -86,6 +86,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			echo '<p>' . mysqli_error($dbc) . '<br /><br />Query: ' . $q . '</p>';
 						
 		} // End of if ($r) IF.
+		
+		echo "<p style='text-align:center;'><a href='adminLogin.php'>Proceed to Login</a>&emsp;<a href='viewAdmin.php'>View Admin</a></p>";
 		
 		mysqli_close($dbc); // Close the database connection.
 
