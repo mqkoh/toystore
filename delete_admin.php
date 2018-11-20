@@ -73,6 +73,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 } // End of the main submission conditional.
 
+echo "<p style='text-align:center;'><a href='index_admin.html'>Back to Home Page</a></p>";
+
 mysqli_close($dbc);
 		
 ?>
