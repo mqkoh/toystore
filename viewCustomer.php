@@ -3,7 +3,7 @@
 
 $page_title = 'View the Current Customers';
 
-echo "<h1 style='text-align:center;'>Customer's Address Book</h1>";
+echo "<h1>Customer's Address Book</h1>";
 
 //Connect to database
 require ('mysqli_connect.php');
@@ -57,8 +57,8 @@ $sort = (isset($_GET['sort'])) ? $_GET['sort'] : 'rd';
 
 // Define the query:
 $q = "	SELECT custID, custName,custPW,custGender,custEmail,custPhone,custAdd,DATE_FORMAT(registration_date, '%M %d, %Y') AS dr
-		FROM customer 
-		ORDER BY $order_by LIMIT $start, $display";		
+		FROM customer
+		ORDER BY $order_by LIMIT $start, $display";
 $r = @mysqli_query ($dbc, $q); // Run the query.
 
 // Table header:
@@ -78,7 +78,7 @@ echo '<table align="center" cellspacing="0" cellpadding="5" width="75%">
 ';
 
 // Fetch and print all the records....
-$bg = '#eeeeee'; 
+$bg = '#eeeeee';
 while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
 	$bg = ($bg=='#eeeeee' ? '#ffffff' : '#eeeeee');
 		echo '<tr bgcolor="' . $bg . '">
@@ -101,15 +101,15 @@ mysqli_close($dbc);
 
 // Make the links to other pages, if necessary.
 if ($pages > 1) {
-	
+
 	echo '<br /><p>';
 	$current_page = ($start/$display) + 1;
-	
+
 	// If it's not the first page, make a Previous button:
 	if ($current_page != 1) {
 		echo '<a href="viewCustomer.php?s=' . ($start - $display) . '&p=' . $pages . '&sort=' . $sort . '">Previous</a> ';
 	}
-	
+
 	// Make all the numbered pages:
 	for ($i = 1; $i <= $pages; $i++) {
 		if ($i != $current_page) {
@@ -118,14 +118,14 @@ if ($pages > 1) {
 			echo $i . ' ';
 		}
 	} // End of FOR loop.
-	
+
 	// If it's not the last page, make a Next button:
 	if ($current_page != $pages) {
 		echo '<a href="viewCustomer.php?s=' . ($start + $display) . '&p=' . $pages . '&sort=' . $sort . '">Next</a>';
 	}
-	
+
 	echo '</p>'; // Close the paragraph.
-	
+
 } // End of links section.
-	
+
 ?>
