@@ -3,7 +3,7 @@
 
 $page_title = 'View the Current Customers';
 
-echo "<h1>Customer's Address Book</h1>";
+echo "<h1 style='text-align:center;'>Customer's Address Book</h1>";
 
 //Connect to database
 require ('mysqli_connect.php');

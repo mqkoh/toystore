@@ -4,7 +4,7 @@
 $page_title = 'View the Current Customers';
 
 // Page header:
-echo '<h1>Registered Customers</h1>';
+echo "<h1 style='text-align:center;'>Registered Customers</h1>";
 
 require ('mysqli_connect.php'); // Connect to the db.
 		
@@ -20,11 +20,11 @@ $num = mysqli_num_rows($r);
 if ($num > 0) { // If it ran OK, display the records.
 
 	// Print how many users there are:
-	echo "<p>There are currently $num registered customers.</p>\n";
-
+	echo "<p style='text-align:center;'>There are currently $num registered customers.</p>\n";
+$bg = '#6495ED';
 	// Table header.
 	echo '<table align="center" cellspacing="3" cellpadding="3" width="75%">
-			<tr>
+			<tr bgcolor="'.$bg.'">
 				<td align="left"><b>Name</b></td>
 				<td align="left"><b>Gender</b></td>
 				<td align="left"><b>Email</b></td>
@@ -35,8 +35,10 @@ if ($num > 0) { // If it ran OK, display the records.
 ';
 	
 	// Fetch and print all the records:
+	$bg = '#eeeeee';
 	while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
-		echo '	<tr>
+		$bg = ($bg=='#eeeeee' ? '#ffffff' : '#eeeeee');
+		echo '<tr bgcolor="' . $bg . '">
 					<td align="left">' . $row['custName'] . '</td>
 					<td align="left">' . $row['custGender'] . '</td>
 					<td align="left">' . $row['custEmail'] . '</td>
