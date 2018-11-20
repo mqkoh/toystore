@@ -63,7 +63,7 @@ $r = @mysqli_query ($dbc, $q); // Run the query.
 
 // Table header:
 $bg = '#6495ED';
-echo '<table align="center" cellspacing="0" cellpadding="5" width="75%">
+echo '<table align="center" cellspacing="3" cellpadding="3" width="75%">
 <tr bgcolor="'.$bg.'">
 	<td align="left"><b><a href="viewCustomer.php?sort=id">Customer ID</a></b></td>
 	<td align="left"><b><a href="viewCustomer.php?sort=cn">Customer Name</a></b></td>
