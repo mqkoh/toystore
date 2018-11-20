@@ -20,7 +20,7 @@ $num = mysqli_num_rows($r);
 if ($num > 0) { // If it ran OK, display the records.
 
 	// Print how many users there are:
-	echo "<p style='text-align:center;'>There are currently $num registered customers.</p>\n";
+	echo "<p style='text-align:center;'>There are currently<b> $num </b> registered customers.</p>\n";
 $bg = '#6495ED';
 	// Table header.
 	echo '<table align="center" cellspacing="3" cellpadding="3" width="75%">
