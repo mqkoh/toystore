@@ -1,4 +1,7 @@
 <?php
+//start session
+session_start();
+
 // The user is redirected here from adminLogin.php.
 
 // If no cookie is present, redirect the user:
@@ -9,6 +12,9 @@ if (!isset($_COOKIE['adminID'])) {
 	redirect_user();	
 
 }
+
+//set user
+$_SESSION["user"]="admin";
 
 // Print a customized message:
 

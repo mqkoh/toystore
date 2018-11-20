@@ -1,4 +1,7 @@
 <?php
+//start session
+session_start();
+
 // The user is redirected here from custLogin.php.
 
 // If no cookie is present, redirect the user:
@@ -11,8 +14,10 @@ if (!isset($_COOKIE['custID'])) {
 
 }
 
-// Print a customized message:
+//set user
+$_SESSION["user"]="customer";
 
+// Print a customized message:
 
 echo "<h1>Logged In!</h1>";
 echo "<br><br>";
