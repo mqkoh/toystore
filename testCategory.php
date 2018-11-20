@@ -36,18 +36,14 @@ $connection = $db_handle->connectDB();
 	?>
 		<div class="product-item">
 			<form method="post" action="testCart.php?action=add&code=<?php echo $product_array[$key]["prodCode"]; ?>">
-			<div class="product-image"><img class="product-image-size" 
-				src="<?php 
-					$id = $product_array[$key]["prodID"];					
-					$stmt->execute();
-					$stmt->store_result();
-					$stmt->bind_result($image);
-					$stmt->fetch();
-					header("Content-Type: image/jpeg");
-					echo $image;
-					//echo $product_array[$key]["prodImage"]; 
-				?>"></div>
-			<div><strong><?php echo $product_array[$key]["name"]; ?></strong></div>
+			<div class="product-image">
+				<?php  
+					$sql = "SELECT prodImage FROM product WHERE prodID = '".$product_array[$key]['prodID']."'";
+					$sth = mysqli_query($connection, $sql);
+					$result=mysqli_fetch_array($sth);
+					echo '<img class="product-image-size" src="data:image/jpeg;base64,'.base64_encode( $result['prodImage'] ).'"/>';
+				?></div>
+			<div><strong><?php echo $product_array[$key]["prodName"]; ?></strong></div>
 			<div class="product-price"><?php echo "RM ".$product_array[$key]["prodPrice"]; ?></div>
 			<div><input type="text" name="quantity" value="1" size="2" /><input type="submit" value="Add to cart" class="btnAddAction" /></div>
 			</form>

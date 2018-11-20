@@ -7,7 +7,7 @@ require ('mysqli_connect.php');
 $stmt = $dbc->prepare("SELECT prodImage FROM product WHERE prodID=?"); 
 $stmt->bind_param("i", $id);
 //$id = $product_array[$key]["prodID"];
-$id = 1;					
+$id = 34;					
 $stmt->execute();
 $stmt->store_result();
 $stmt->bind_result($image);
