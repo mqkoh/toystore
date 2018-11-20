@@ -3,7 +3,7 @@
 
 $page_title = 'View the Current Customers';
 
-echo '<h1>Registered Customers</h1>';
+echo "<h1 style="text-align:center;">Customer's Address Book</h1>";
 
 //Connect to database
 require ('mysqli_connect.php');
@@ -62,10 +62,9 @@ $q = "	SELECT custID, custName,custPW,custGender,custEmail,custPhone,custAdd,DAT
 $r = @mysqli_query ($dbc, $q); // Run the query.
 
 // Table header:
+$bg = '#6495ED';
 echo '<table align="center" cellspacing="0" cellpadding="5" width="75%">
-<tr>
-	<td align="left"><b>Edit</b></td>
-	<td align="left"><b>Delete</b></td>
+<tr bgcolor="'.$bg.'">
 	<td align="left"><b><a href="viewCustomer.php?sort=id">Customer ID</a></b></td>
 	<td align="left"><b><a href="viewCustomer.php?sort=cn">Customer Name</a></b></td>
 	<td align="left"><b>Gender</b></td>
@@ -73,6 +72,8 @@ echo '<table align="center" cellspacing="0" cellpadding="5" width="75%">
 	<td align="left"><b>Phone</b></td>
 	<td align="left"><b>Address</b></td>
 	<td align="left"><b><a href="viewCustomer.php?sort=rd">Date Registered</a></b></td>
+	<td align="left"><b>Edit</b></td>
+	<td align="left"><b>Delete</b></td>
 </tr>
 ';
 
@@ -81,8 +82,6 @@ $bg = '#eeeeee';
 while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
 	$bg = ($bg=='#eeeeee' ? '#ffffff' : '#eeeeee');
 		echo '<tr bgcolor="' . $bg . '">
-		<td align="left"><a href="edit_cust.php?id='.$row['custID'].'">Edit</a></td>
-		<td align="left"><a href="delete_cust.php?id='.$row['custID'].'">Delete</a></td>
 		<td align="left">'.$row['custID'].'</td>
 		<td align="left">'.$row['custName'].'</td>
 		<td align="left">'.$row['custGender'].'</td>
@@ -90,6 +89,8 @@ while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
 		<td align="left">'.$row['custPhone'].'</td>
 		<td align="left">'.$row['custAdd'].'</td>
 		<td align="left">'.$row['dr'].'</td>
+		<td align="left"><a href="edit_cust.php?id='.$row['custID'].'">Edit</a></td>
+		<td align="left"><a href="delete_cust.php?id='.$row['custID'].'">Delete</a></td>
 	</tr>
 	';
 } // End of WHILE loop.
