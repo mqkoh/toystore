@@ -5,12 +5,12 @@ $page_title = 'Edit Admin';
 echo '<h1>Edit admin</h1>';
 
 // Check for a valid admin ID, through GET or POST:
-if ( (isset($_GET['adminID'])) && (is_numeric($_GET['adminID'])) ) { // From viewAdmin.php
-	$id = $_GET['adminID'];
-} elseif ( (isset($_POST['adminID'])) && (is_numeric($_POST['adminID'])) ) { // Form submission.
-	$id = $_POST['adminID'];
+if ( (isset($_GET['id'])) && (is_numeric($_GET['id'])) ) { // From viewAdmin.php
+	$id = $_GET['id'];
+} elseif ( (isset($_POST['id'])) && (is_numeric($_POST['id'])) ) { // Form submission.
+	$id = $_POST['id'];
 } else { // No valid ID, kill the script.
-	echo '<p class="error">[1] This page has been accessed in error.</p>';
+	echo '<p class="error">This page has been accessed in error.</p>';
 	exit();
 }
 
