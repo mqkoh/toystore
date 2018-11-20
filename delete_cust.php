@@ -1,8 +1,8 @@
 <?php 
 // This page is for deleting a customer record.
 
-$page_title = 'Delete a Customer';
-echo '<h1>Delete a customer</h1>';
+$page_title = 'Delete  Customer';
+echo '<h1>Delete Customer</h1>';
 
 // Check for a valid customer ID, through GET or POST:
 if ( (isset($_GET['id'])) && (is_numeric($_GET['id'])) ) { // From viewCustomer.php
@@ -85,12 +85,9 @@ h1{
   	text-align: center;
  	color: #000000;
 }
-
-form{
-	border:1px solid;
-	padding:10px;
-	box-shadow:5px 10px #888888;
-	background-color:#33BAFF;
+fieldset{
+	text-align:left;
+	padding-left:700px;
 }
 body{
 	text-align:center;

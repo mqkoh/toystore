@@ -1,8 +1,8 @@
 <?php 
 // This page is for deleting an admin record.
 
-$page_title = 'Delete an Admin';
-echo '<h1>Delete an admin</h1>';
+$page_title = 'Delete Admin';
+echo '<h1>Delete Admin</h1>';
 
 // Check for a valid customer ID, through GET or POST:
 if ( (isset($_GET['id'])) && (is_numeric($_GET['id'])) ) { // From viewCustomer.php
@@ -76,3 +76,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 mysqli_close($dbc);
 		
 ?>
+<style>
+h1{
+	font-family:Charcoal,Sans-serif;
+  	left: 0;
+  	top: 50%;
+  	width: 100%;
+  	text-align: center;
+ 	color: #000000;
+}
+fieldset{
+	text-align:left;
+	padding-left:700px;
+}
+body{
+	text-align:center;
+	padding-top:200px;
+ }
+</style>
