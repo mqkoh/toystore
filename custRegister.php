@@ -130,9 +130,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <h1>Register Customer</h1>
 <div>
 <form action="custRegister.php" method="post">
-
 	<h5>Dear customers, <br/> Kindly confirm all your details before you click the register button.<br/>
 	Only password are made available for edit purposes in future.<br/> Sorry for the inconvenience caused.</h5>
+	
 	<p>Name				: <input type="text" name="custName" size="20" maxlength="40" value="<?php if (isset($_POST['custName'])) echo $_POST['custName']; ?>" /></p>
 	<p>Password			: <input type="password" name="pass1" size="10" maxlength="20" value="<?php if (isset($_POST['pass1'])) echo $_POST['pass1'];?>"  /></p>
 	<p>Confirm Password	: <input type="password" name="pass2" size="10" maxlength="20" value="<?php if (isset($_POST['pass2'])) echo $_POST['pass2'];?>"  /></p>
@@ -149,11 +149,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 body {
 	background-image: linear-gradient(#E9C548, #E7E573);
 	background-size: 100%;
-	color: white;
+	color: #000000;
 	font-family: 'Nunito', sans-serif;
 	margin: 20pt;
-	}
-	
+}
+
 h1{
 	font-family:Charcoal,Sans-serif;
   	left: 0;
@@ -171,7 +171,15 @@ div{
 body{
 	text-align:center;
 	background-color:#bf99d9;
-	padding-top:300px;
+	padding-top:28px;
 	
- }
+}
+form {
+	padding-top:30px;
+	padding-right:50px;
+	padding-left:580px;
+	padding-bottom:30px;
+	text-align:left;
+	font-size:18px;
+}
 </style>
