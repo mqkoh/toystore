@@ -88,9 +88,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		if ($r) { // If it ran OK.
 		
 			// Print a message:
-			echo '	<h1>Thank you!</h1>
-					<p>You are now registered successfully.</p><p><br /></p>
-					<a href="custLogin.php";>Login</a></p>';	
+			echo "<h1 style='text-align:center;'>Thank you!</h1>";
+			echo "<p style='text-align:center;'>You have now registered successfully.</p>";
 		
 		} else { // If it did not run OK.
 			
@@ -103,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 						
 		} // End of if ($r) IF.
 		
-		echo '<a href="custLogin.php">Proceed to Login</a>&emsp;<a href="index.php">Back to Home Page</a>';
+		echo "<p style='text-align:center;'><a href='custLogin.php'>Proceed to Login</a>&emsp;<a href='index.php'>Back to Home Page</a></p>";
 		
 		mysqli_close($dbc); // Close the database connection.
 
