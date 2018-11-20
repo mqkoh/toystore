@@ -66,9 +66,9 @@ $r = @mysqli_query ($dbc, $q); // Run the query.
 $bg = '#6495ED';
 echo '<table align="center" cellspacing="3" cellpadding="3" width="75%">
 <tr bgcolor="'.$bg.'">
-	<td align="left"><b><a href="viewProduct.php?sort=id">Product ID</a></b></td>
-	<td align="left"><b><a href="viewProduct.php?sort=pc">Product Code</a></b></td>
-	<td align="left"><b><a href="viewProduct.php?sort=pn">Product Name</a></b></td>
+	<td align="left"><b><a href="viewProduct.php?sort=id">ID</a></b></td>
+	<td align="left"><b><a href="viewProduct.php?sort=pc">Code</a></b></td>
+	<td align="left"><b><a href="viewProduct.php?sort=pn">Name</a></b></td>
 	<td align="left"><b>Category</b></td>
 	<td align="left"><b>Price (RM)</b></td>
 	<td align="left"><b>Description</b></td>
