@@ -1,8 +1,8 @@
 <?php 
 // This page is for editing a user record.
 
-$page_title = 'Edit Product';
-echo '<h1>Edit Product</h1>';
+$page_title = 'Edit product';
+echo '<h1>Edit product</h1>';
 
 // Check for a valid product ID, through GET or POST:
 if ( (isset($_GET['id'])) && (is_numeric($_GET['id'])) ) { // From viewCustomer.php
