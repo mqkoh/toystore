@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$errors[] = 'You forgot to enter your password.';
 	}
 	
-	//Check for customer gender 
+	//Check for admin gender 
 	if (empty($_POST['adminGender'])){
 		$errors[] = 'You forgot to pick your gender.';
 	}else{
@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	
 	if (empty($errors)) { // If everything's OK.
 	
-		// Register the user in the database...
+		// Register the admin in the database...
 		
 		// Make the query:
 		$q = "INSERT INTO admin(adminID,adminName,adminPW,adminGender,adminEmail,adminPhone,adminAdd,registration_date)VALUES('$aid','$an',SHA1('$p'),'$ag','$ae','$ap','$aa',NOW())";	//SHA1 = encryption
@@ -73,10 +73,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		if ($r) { // If it ran OK.
 		
 			// Print a message:
-			echo '	<h1>Thank you!</h1>
-					<p>You are now registered successfully.</p><p><br/>
-					<a href="index_admin.html";>Back to Home Page</a></p>';
-		
+			echo "<h1 style='text-align:center;'>Thank you!</h1>";
+			echo "<p style='text-align:center;'>You have registered successfully.</p>";
+			echo "<p style='text-align:center;'><a href='adminLogin.php'>Proceed to Login</a>&emsp;<a href='viewAdmin.php'>View Admin</a></p>";
 		} else { // If it did not run OK.
 			
 			// Public message:
