@@ -74,7 +74,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		
 			// Print a message:
 			echo '	<h1>Thank you!</h1>
-					<p>You are now registered successfully.</p><p><br /></p>';	
+					<p>You are now registered successfully.</p><p><br/>
+					<a href="index_admin.html";>Back to Home Page</a></p>';
 		
 		} else { // If it did not run OK.
 			

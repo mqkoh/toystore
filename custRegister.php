@@ -89,7 +89,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		
 			// Print a message:
 			echo '	<h1>Thank you!</h1>
-					<p>You are now registered successfully.</p><p><br /></p>';	
+					<p>You are now registered successfully.</p><p><br /></p>
+					<a href="custLogin.php";>Login</a></p>';	
 		
 		} else { // If it did not run OK.
 			
