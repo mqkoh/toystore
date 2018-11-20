@@ -17,7 +17,7 @@ $db_handle = new DBController();
 <div class="content">
 <div class="top">
 	<button class="iconbox" onclick="window.location.href='shoppingcart.php';">Shopping Cart<img class="icon" src="images/shoppingcart.png"></button>
-	<a href="index.html"><img class="logo" src="images/logo_transparent.png" alt="Dream Realm"></a>
+	<a href="index.php"><img class="logo" src="images/logo_transparent.png" alt="Dream Realm"></a>
 	<div class="topnav">
 		<?php 
 			if (isset($_COOKIE['custName'])) {
