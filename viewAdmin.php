@@ -4,6 +4,7 @@
 $page_title = 'View the Current Admin';
 
 echo "<h1 style='text-align:center;'>Registered Admins</h1>";
+echo "<p style='text-align:center;'><a href=\"adminRegister.php\";>Register A New Admin</a></p>";
 
 //Connect to database
 require ('mysqli_connect.php');
@@ -91,8 +92,7 @@ while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
 		<td align="left">'.$row['dr'].'</td>
 		<td align="left"><a href="edit_admin.php?id='.$row['adminID'].'">Edit</a></td>
 		<td align="left"><a href="delete_admin.php?id='.$row['adminID'].'">Delete</a></td>
-	</tr>
-	';
+	</tr>';
 } // End of WHILE loop.
 
 echo '</table>';
@@ -127,5 +127,5 @@ if ($pages > 1) {
 	echo '</p>'; // Close the paragraph.
 	
 } // End of links section.
-	
+
 ?>
