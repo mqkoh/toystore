@@ -20,7 +20,7 @@ echo "<h1>Logged Out!</h1>";
 echo "<br><br>";
 echo "<div>
 		<p>You are now logged out, {$_COOKIE['adminName']}!</p>
-		<p><a href=\"index.html\">Back to Home Page</a></p>
+		<p><a href=\"index.php\">Back to Home Page</a></p>
 	</div>";
 ?>
 <html>
