@@ -106,7 +106,7 @@ while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
 		<td align="left">'.$row['prodCategory'].'</td>
 		<td align="left">'.$row['prodPrice'].'</td>
 		<td align="left">'.$row['prodDesc'].'</td>
-		<td align="left"><a href="edit_product.php?prodID='.$row['prodID'].'">Edit</a></td>
+		<td align="left"><a href="edit_product.php?id='.$row['prodID'].'">Edit</a></td>
 		<td align="left"><a href="delete_product.php?prodID='.$row['prodID'].'">Delete</a></td>
 	</tr>
 	';
