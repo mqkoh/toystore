@@ -103,7 +103,15 @@ if(isset($_SESSION["cart_item"])){
 }
 ?>
 <button class="continue" onclick="javascript:history.go(-1)">Continue Shopping</button>
-<button class="check-out" onclick="checkout()">Finished shopping? Check out your items!</button>
+<button class="check-out" onclick="
+	<?php if (isset($_SESSION['user'])) {
+		if ($_SESSION['user']=="customer") {
+			?>checkout()
+	<?php } 
+		} else {
+			?>alert('Please login before checking out items!')
+		<?php }?>
+	">Finished shopping? Check out your items!</button>
 </div>
 	<div id = "footer">
 		<a href="index.html">Home</a>&emsp;
