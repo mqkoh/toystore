@@ -8,7 +8,7 @@ echo '<h1>Thank you for your feedback!</h1><h2>We will send you a reply as soon 
 echo 'Name: ' . $name;
 echo '<br>Email: ' . $email;
 echo '<br>Comment: ' . $comment;
-echo '<br><br><a href="index.html">Return to home page.</a>';
+echo '<br><br><a href="index.php">Return to home page.</a>';
 		
 ?>
 

@@ -69,9 +69,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				echo '<p>' . mysqli_error($dbc) . '<br /><br />Query: ' . $q . '</p>';
 	
 			}
-
+			
+			echo '<a href="index.php">Back to Home Page</a>';
+			
 			mysqli_close($dbc); // Close the database connection.
-
+			
 			// Include the footer and quit the script (to not show the form).
 			exit();
 				
@@ -90,8 +92,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		echo '</p><p>Please try again.</p><p><br /></p>';
 	
 	} // End of if (empty($errors)) IF.
+	
+	echo '<a href="index.php">Back to Home Page</a>';
+	
 
-	mysqli_close($dbc); // Close the database connection.
+	mysqli_close($dbc); // Close the database connection.	
+	
 		
 }// End of the main Submit conditional.
 ?>
