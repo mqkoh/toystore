@@ -61,12 +61,12 @@ END_OF_TEXT;
 	
 	if (empty($_POST['prodPrice'])){
 	 	$errors[] = 'You forgot to enter your the price.';
-	 } else {
+	 } /*else {
 		$prodPrice_pattern = "/^\d+(\.\d{2})?$/";
 
 		if (preg_match ($prodPrice_pattern, $_POST['prodPrice'])){
 			$safe_price = mysqli_real_escape_string($dbc, $_POST['prodPrice']); // capture the string
-		} else{
+		}*/ else{
 			$errors[]= "Wrong price format!";
 		}
 	}
