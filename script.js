@@ -25,11 +25,12 @@ if (filename == "index.html") {
 	}
 	
 }
-	function checkout() {
-		if (confirm("Do you want to check out your items?")) {
-			document.getElementById("shopping-cart").innerHTML = "<br>Thank you for shopping with us!";
-		} 
-	}
+	
+function checkout() {
+	if (confirm("Do you want to check out your items?")) {
+		document.getElementById("shopping-cart").innerHTML = "<br>Thank you for shopping with us!";
+	} 
+}
 
 
 
