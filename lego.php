@@ -37,7 +37,7 @@ $connection = $db_handle->connectDB();
 		foreach($product_array as $key=>$value){
 	?>
 		<div class="product-item">
-			<form method="post" action="testCart.php?action=add&code=<?php echo $product_array[$key]["prodCode"]; ?>">
+			<form method="post" action="shoppingcart.php?action=add&prodCode=<?php echo $product_array[$key]["prodCode"]; ?>">
 			<div class="product-image">
 				<?php  
 					$sql = "SELECT prodImage FROM product WHERE prodID = '".$product_array[$key]['prodID']."'";

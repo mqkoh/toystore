@@ -2,17 +2,43 @@
 session_start();
 require_once("dbcontroller.php");
 $db_handle = new DBController();
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Dream Realm - Funko Pop</title>
+	<link rel="icon" href="images/favicon.png">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="script.js" type="text/javascript"></script>
+	<link href="https://fonts.googleapis.com/css?family=Cuprum|Exo|Indie+Flower|Nunito" rel="stylesheet">	
+</head>
+<body>
+
+<div class="top">
+	<a href="index.html"><img class="logo" src="images/logo_transparent.png" alt="Dream Realm"></a>
+	<div class="topnav">
+		<button class="topnav-button" id="home" onclick="window.location.href='index.html';">Home</button>
+		<button class="topnav-button" id="categories" onclick="window.location.href='plushies.php';">Plushies</button>
+		<button class="topnav-button" id="categories" onclick="window.location.href='lego.php';">Lego</button>
+		<button class="topnav-button" id="categories" onclick="window.location.href='pop.php';">Pop</button>
+		<button class="topnav-button" id="register" onclick="window.location.href='custRegister.php';">New to our website? Register as our new member here!</button>
+		<button class="topnav-button" id="login" onclick="window.location.href='custLogin.php';">Already a member? Login here!</button>
+		<button class="topnav-button" id="login-admin" onclick="window.location.href='adminLogin.php';">Login as admin</button>
+	</div>
+</div>
+<?php 	
 if(!empty($_GET["action"])) {
 switch($_GET["action"]) {
 	case "add":
 		if(!empty($_POST["quantity"])) {
-			$productByCode = $db_handle->runQuery("SELECT * FROM pro WHERE code='" . $_GET["code"] . "'");
-			$itemArray = array($productByCode[0]["code"]=>array('name'=>$productByCode[0]["name"], 'code'=>$productByCode[0]["code"], 'quantity'=>$_POST["quantity"], 'price'=>$productByCode[0]["price"]));
+			$productByCode = $db_handle->runQuery("SELECT * FROM product WHERE prodCode='" . $_GET["prodCode"] . "'");
+			$itemArray = array($productByCode[0]["prodCode"]=>array('name'=>$productByCode[0]["prodName"], 'code'=>$productByCode[0]["prodCode"], 'quantity'=>$_POST["quantity"], 'price'=>$productByCode[0]["prodPrice"]));
 			
 			if(!empty($_SESSION["cart_item"])) {
-				if(in_array($productByCode[0]["code"],$_SESSION["cart_item"])) {
+				if(in_array($productByCode[0]["prodCode"],$_SESSION["cart_item"])) {
 					foreach($_SESSION["cart_item"] as $k => $v) {
-							if($productByCode[0]["code"] == $k)
+							if($productByCode[0]["prodCode"] == $k)
 								$_SESSION["cart_item"][$k]["quantity"] = $_POST["quantity"];
 					}
 				} else {
@@ -46,7 +72,7 @@ switch($_GET["action"]) {
 </head>
 <body>
 <div id="shopping-cart">
-<div class="txt-heading">Shopping Cart <a id="btnEmpty" href="index.php?action=empty">Empty Cart</a></div>
+<div class="txt-heading">Shopping Cart <a id="btnEmpty" href="shoppingcart.php?action=empty">Empty Cart</a></div>
 <?php
 if(isset($_SESSION["cart_item"])){
     $item_total = 0;
@@ -68,7 +94,7 @@ if(isset($_SESSION["cart_item"])){
 			<td><?php echo $item["code"];?></td>
 			<td><?php echo $item["quantity"];?></td>
 			<td><?php echo $item["price"];?></td>
-			<td><a href="index.php?action=remove&code=<?php echo $item["code"];?>" class="btnRemoveAction">Remove Item</a></td>
+			<td><a href="shoppingcart.php?action=remove&prodCode=<?php echo $item["code"];?>" class="btnRemoveAction">Remove Item</a></td>
 		</tr>
 		<?php 
 		$item_total+=($item["price"]*$item["quantity"]);
@@ -82,27 +108,6 @@ if(isset($_SESSION["cart_item"])){
 <?php
 }
 ?>
-</div>
-
-<div id="product-grid">
-	<div class="txt-heading">Products</div>
-	<?php
-	$product_array = $db_handle->runQuery("SELECT * FROM product ORDER BY id ASC");
-	if (!empty($product_array)) { 
-		foreach($product_array as $key=>$value){
-	?>
-		<div class="product-item">
-			<form method="post" action="index.php?action=add&code=<?php echo $product_array[$key]["code"]; ?>">
-			<div class="product-image"><img class="product-image-size" src="<?php echo $product_array[$key]["image"]; ?>"></div>
-			<div><strong><?php echo $product_array[$key]["name"]; ?></strong></div>
-			<div class="product-price"><?php echo "RM ".$product_array[$key]["price"]; ?></div>
-			<div><input type="text" name="quantity" value="1" size="2" /><input type="submit" value="Add to cart" class="btnAddAction" /></div>
-			</form>
-		</div>
-	<?php
-			}
-	}
-	?>
 </div>
 </body>
 </html>
