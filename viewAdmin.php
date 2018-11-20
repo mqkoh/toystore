@@ -3,7 +3,7 @@
 
 $page_title = 'View the Current Admin';
 
-echo '<h1>Registered Admins</h1>';
+echo "<h1 style='text-align:center;'>Registered Admins</h1>";
 
 //Connect to database
 require ('mysqli_connect.php');
@@ -62,10 +62,9 @@ $q = "	SELECT adminID,adminName,adminPW,adminGender,adminEmail,adminPhone,adminA
 $r = @mysqli_query ($dbc, $q); // Run the query.
 
 // Table header:
-echo '<table align="center" cellspacing="0" cellpadding="5" width="75%">
-<tr>
-	<td align="left"><b>Edit</b></td>
-	<td align="left"><b>Delete</b></td>
+$bg = '#6495ED';
+echo '<table align="center" cellspacing="3" cellpadding="3" width="75%">
+<tr bgcolor="'.$bg.'">
 	<td align="left"><b><a href="viewAdmin.php?sort=id">Admin ID</a></b></td>
 	<td align="left"><b><a href="viewAdmin.php?sort=an">Admin Name</a></b></td>
 	<td align="left"><b>Gender</b></td>
@@ -73,6 +72,8 @@ echo '<table align="center" cellspacing="0" cellpadding="5" width="75%">
 	<td align="left"><b>Phone</b></td>
 	<td align="left"><b>Address</b></td>
 	<td align="left"><b><a href="viewAdmin.php?sort=rd">Date Registered</a></b></td>
+	<td align="left"><b>Edit</b></td>
+	<td align="left"><b>Delete</b></td>
 </tr>
 ';
 
@@ -81,8 +82,6 @@ $bg = '#eeeeee';
 while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
 	$bg = ($bg=='#eeeeee' ? '#ffffff' : '#eeeeee');
 		echo '<tr bgcolor="' . $bg . '">
-		<td align="left"><a href="edit_admin.php?id='.$row['adminID'].'">Edit</a></td>
-		<td align="left"><a href="delete_admin.php?id='.$row['adminID'].'">Delete</a></td>
 		<td align="left">'.$row['adminID'].'</td>
 		<td align="left">'.$row['adminName'].'</td>
 		<td align="left">'.$row['adminGender'].'</td>
@@ -90,6 +89,8 @@ while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
 		<td align="left">'.$row['adminPhone'].'</td>
 		<td align="left">'.$row['adminAdd'].'</td>
 		<td align="left">'.$row['dr'].'</td>
+		<td align="left"><a href="edit_admin.php?id='.$row['adminID'].'">Edit</a></td>
+		<td align="left"><a href="delete_admin.php?id='.$row['adminID'].'">Delete</a></td>
 	</tr>
 	';
 } // End of WHILE loop.
