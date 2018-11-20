@@ -311,13 +311,13 @@ th,td {
 }
 
 .product-image {
-	height:100px; 
+	height:200px; 
 	background-color:#FFF;
 }
 
 .product-image-size {
 	height:auto; 
 	width:auto; 
-	max-width:100px; 
-	max-height: 100px;
+	max-width:200px; 
+	max-height: 200px;
 }
