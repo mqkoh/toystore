@@ -101,6 +101,8 @@ if (mysqli_num_rows($r) == 1) { // Valid user ID, show the form.
 			<p><input type="submit" name="submit" value="Submit" /></p>
 			<input type="hidden" name="id" value="' . $id . '" />
 		</form>';
+	
+	echo '<a href="index_admin.html">Go to Home Page</a>';
 
 } else { // Not a valid user ID.
 	echo '<p class="error">This page has been accessed in error.</p>';

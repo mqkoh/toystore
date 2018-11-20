@@ -28,14 +28,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	} else {
 		$an = mysqli_real_escape_string($dbc, trim($_POST['adminName']));
 	}
-	
-	/* Check for a last name:
-	if (empty($_POST['last_name'])) {
-		$errors[] = 'You forgot to enter your last name.';
-	} else {
-		$ln = mysqli_real_escape_string($dbc, trim($_POST['last_name']));
-	}
-	*/
 
 	// Check for an email address:
 	if (empty($_POST['adminEmail'])) {
@@ -80,6 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		echo '</p><p>Please try again.</p>';
 	
 	} // End of if (empty($errors)) IF.
+	
 
 } // End of submit conditional.
 
@@ -101,6 +94,8 @@ if (mysqli_num_rows($r) == 1) { // Valid user ID, show the form.
 			<p><input type="submit" name="submit" value="Submit" /></p>
 			<input type="hidden" name="id" value="' . $id . '" />
 		</form>';
+	
+	echo '<a href="index_admin.html">Go to Home Page</a>';
 
 } else { // Not a valid user ID.
 	echo '<p class="error">This page has been accessed in error.</p>';
