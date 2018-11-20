@@ -7,7 +7,7 @@ $db_handle = new DBController();
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Dream Realm - Funko Pop</title>
+	<title>Shopping Cart</title>
 	<link rel="icon" href="images/favicon.png">
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script src="script.js" type="text/javascript"></script>
@@ -65,12 +65,6 @@ switch($_GET["action"]) {
 }
 }
 ?>
-<html>
-<head>
-<title>Simple PHP Shopping Cart</title>
-<link href="style.css" type="text/css" rel="stylesheet" />
-</head>
-<body>
 <div id="shopping-cart">
 <div class="txt-heading">Shopping Cart <a id="btnEmpty" href="shoppingcart.php?action=empty">Empty Cart</a></div>
 <?php
