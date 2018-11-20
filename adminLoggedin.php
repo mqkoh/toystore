@@ -22,7 +22,7 @@ echo "<h1>Logged In!</h1>";
 echo "<br><br>";
 echo "<div>
 		<p>You are now logged in, {$_COOKIE['adminName']}!</p>
-		<p><a href=\"adminLogout.php\";>Logout</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=\"index.html\">Home</a></p>
+		<p><a href=\"adminLogout.php\";>Logout</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=\"index_admin.html\">Home</a></p>
 	</div>";
 ?>
 <html>
