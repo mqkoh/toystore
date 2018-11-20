@@ -119,7 +119,7 @@ h1{
  	color: #000000;
 }
 
-div{
+form{
 	border:1px solid;
 	padding:10px;
 	box-shadow:5px 10px #888888;
