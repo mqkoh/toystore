@@ -3,6 +3,10 @@
 body, html{
 	font-family: 'Nunito', sans-serif;
 	margin: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	position: relative;
 }
 
 .top {
@@ -19,19 +23,37 @@ body, html{
 	display: inline-block;
 }
 
-.topnav-button {
+.icon {
+	width: 50px;
+	height: auto;
+}
+
+.iconbox {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	font-family: 'Nunito', sans-serif;
+}
+	
+
+.lower-button {
 	padding: 5px;
 	font-family: 'Nunito', sans-serif;
 	border-radius: 10%;
 }
 
-.topnav-button:hover {
+.lower-button:hover {
 	background-color: #AEA17D;
 }
 
-footer{
+#footer{
+	clear: both;
+    position: relative;
+    z-index: 10;
+	bottom: 0;
+	width: 100%;
 	border-top: 1px solid grey;
-	padding-top: 10px;
+	padding: 10px;
 	text-align: center;
 	font-size: 10pt;
 }
@@ -46,14 +68,16 @@ footer{
 
 .content {
 	width: 100%;
+	position: relative;
+	bottom: 0;
 }
 
 .about {
-	height: 45vh;
+	height: 60vh;
 	text-align: justify;
 	background-image: url("images/background1.jpg");
 	opacity: 0.8;
-	padding: 50px;
+	padding: 30px;
 	background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -270,7 +294,8 @@ th,td {
 
 #product-grid {
 	border-top: #F08426 2px solid; 
-	margin-bottom:30px;
+	margin-bottom: 30px;
+	padding: 20px;
 }
 
 .product-item {	

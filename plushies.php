@@ -15,19 +15,16 @@ $connection = $db_handle->connectDB();
 	<link href="https://fonts.googleapis.com/css?family=Cuprum|Exo|Indie+Flower|Nunito" rel="stylesheet">	
 </head>
 <body>
-
+<div class="content">
 <div class="top">
+	<button class="iconbox" onclick="window.location.href='shoppingcart.php';">Shopping Cart<img class="icon" src="images/shoppingcart.png"></button>
 	<a href="index.html"><img class="logo" src="images/logo_transparent.png" alt="Dream Realm"></a>
 	<div class="topnav">
-		<button class="topnav-button" id="home" onclick="window.location.href='index.html';">Home</button>
-		<button class="topnav-button" id="categories" onclick="window.location.href='plushies.php';">Plushies</button>
-		<button class="topnav-button" id="categories" onclick="window.location.href='lego.php';">Lego</button>
-		<button class="topnav-button" id="categories" onclick="window.location.href='pop.php';">Pop</button>
-		<button class="topnav-button" id="register" onclick="window.location.href='custRegister.php';">New to our website? Register as our new member here!</button>
-		<button class="topnav-button" id="login" onclick="window.location.href='custLogin.php';">Already a member? Login here!</button>
-		<button class="topnav-button" id="login-admin" onclick="window.location.href='adminLogin.php';">Login as admin</button>
-	</div>
-</div>	
+		<button class="lower-button" id="register" onclick="window.location.href='custRegister.php';">New to our website? Register as our new member here!</button>
+		<button class="lower-button" id="login" onclick="window.location.href='custLogin.php';">Already a member? Login here!</button>
+		<button class="lower-button" id="login-admin" onclick="window.location.href='adminLogin.php';">Login as admin</button>
+	</div>	
+</div>
 <div id="product-grid">
 	<div class="txt-heading">Dream Realm - Plushies</div>
 	<?php
@@ -54,6 +51,19 @@ $connection = $db_handle->connectDB();
 			}
 	}
 	?>
+</div>
+	<div id = "footer">
+		<a href="index.html">Home</a>&emsp;
+		<a href="plushies.php">Plushies</a>&emsp;
+		<a href="lego.php">Lego</a>&emsp;
+		<a href="pop.php">Funko Pop</a>&emsp;
+		<br>
+		Copyright &copy; 2018 Dream Realm
+		<br>
+		<b>Disclaimer: </b> Materials such as images, audio, videos and product details on this website do not belong to <i> Dream Realm </i>
+		<br>
+		These materials are obtained from the internet for assignment purpose only.
+	</div>
 </div>
 <script src="script.js" type="text/javascript"></script>
 </body>

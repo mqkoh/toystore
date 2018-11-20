@@ -40,7 +40,8 @@ if (!$_POST) {
 	<br/>	
 	
 	<fieldset>
-	<input type="hidden" name="MAX_FILE_SIZE" value="1048576" />	
+	<legend>Product Image:</legend>
+	<input type="hidden" name="MAX_FILE_SIZE" value="2097152" />	
 	<input type="file" name="prodImage" accept="image/png, image/jpeg" required="required">
 	</fieldset>
 	<br/>
