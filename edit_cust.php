@@ -1,8 +1,8 @@
 <?php 
 // This page is for editing a user record.
 
-$page_title = 'Edit a Customer';
-echo '<h1>Edit a Customer</h1>';
+$page_title = 'Edit Customer';
+echo '<h1>Edit Customer</h1>';
 
 // Check for a valid customer ID, through GET or POST:
 if ( (isset($_GET['id'])) && (is_numeric($_GET['id'])) ) { // From viewCustomer.php
