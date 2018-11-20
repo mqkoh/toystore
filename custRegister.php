@@ -133,7 +133,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	<h5>Dear customers, <br/> Kindly confirm all your details before you click the register button.<br/>
 	Only password are made available for edit purposes in future.<br/> Sorry for the inconvenience caused.</h5>
 	
-	<p>Name				: <input type="text" name="custName" size="20" maxlength="40" value="<?php if (isset($_POST['custName'])) echo $_POST['custName']; ?>" /></p>
+	<p>UserName			: <input type="text" name="custName" size="20" maxlength="40" value="<?php if (isset($_POST['custName'])) echo $_POST['custName']; ?>"placeholder="5-20 character" /></p>
 	<p>Password			: <input type="password" name="pass1" size="10" maxlength="20" value="<?php if (isset($_POST['pass1'])) echo $_POST['pass1'];?>"  /></p>
 	<p>Confirm Password	: <input type="password" name="pass2" size="10" maxlength="20" value="<?php if (isset($_POST['pass2'])) echo $_POST['pass2'];?>"  /></p>
 	<p>Gender			: <input type="radio" name="custGender" <?php if (isset($_POST['custGender']) && ($_POST['custGender']) == "M") echo $_POST['custGender'];?> value="M" /> Male
