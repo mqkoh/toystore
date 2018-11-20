@@ -1,3 +1,21 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Dream Realm</title>
+	<link rel="icon" href="images/favicon.png">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link href="https://fonts.googleapis.com/css?family=Cuprum|Exo|Indie+Flower|Nunito" rel="stylesheet">	
+</head>
+<body>
+
+<div class="top">
+	<a href="index_admin.html"><img class="logo" src="images/logo_transparent.png" alt="Dream Realm"></a>
+	<div class="topnav">
+		<button class="lower-button" id="login-admin" onclick="window.location.href='adminLogout.php';">Log out</button>
+	</div>	
+</div>
+</body>
+</html>
 <?php 
 // This script retrieves all the records from the users table.
 
@@ -129,3 +147,16 @@ if ($pages > 1) {
 } // End of links section.
 
 ?>
+<div>	
+<footer id = "footer">
+		<a href="index_admin.html">Home</a>
+		<br>
+		Copyright &copy; 2018 Dream Realm
+		<br>
+		<b>Disclaimer: </b> Materials such as images, audio, videos and product details on this website do not belong to <i> Dream Realm </i>
+		<br>
+		These materials are obtained from the internet for assignment purpose only.
+</footer>
+</div>
+
+<script src="script.js" type="text/javascript"></script>
